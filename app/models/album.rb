@@ -13,4 +13,6 @@ class Album < ApplicationRecord
             :description,
             :artist_id,
             :label_id, presence: true
+
+  validates :title, uniqueness: { scope: :artist_id }
 end

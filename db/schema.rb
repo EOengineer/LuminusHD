@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20170912025417) do
     t.boolean "available", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["label_id"], name: "index_albums_on_label_id"
+    t.index ["title", "artist_id"], name: "index_albums_on_title_and_artist_id", unique: true
   end
 
   create_table "artists", force: :cascade do |t|
