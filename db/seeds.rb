@@ -44,7 +44,7 @@ end
   )
 
   compensated_index = x < genres.length ? x : x - genres.length
-  # binding.pry
+
   AlbumGenre.create!(
     album_id: x + 1,
     genre_id: compensated_index + 1
