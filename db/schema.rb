@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910013713) do
+ActiveRecord::Schema.define(version: 20170912025417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_genres", force: :cascade do |t|
+    t.integer "album_id"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_album_genres_on_album_id"
+    t.index ["genre_id"], name: "index_album_genres_on_genre_id"
+  end
 
   create_table "album_tracks", force: :cascade do |t|
     t.integer "album_id"
@@ -42,6 +51,12 @@ ActiveRecord::Schema.define(version: 20170910013713) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
