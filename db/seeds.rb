@@ -31,6 +31,7 @@ genres.each do |genre|
   )
 end
 
+# Album Creation
 20.times do |x|
   @album = Album.create!(
     title: "album #{x}",
@@ -51,6 +52,7 @@ end
   )
 
 
+  # Track Creation
   10.times do |y|
     @album.tracks.create!(
       title: "Album #{x} Track #{y}",

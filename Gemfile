@@ -37,6 +37,10 @@ gem 'jbuilder', '~> 2.5'
 ############################################ Our Gems ###############################################
 gem 'acts_as_list', '~> 0.9.7'
 
+gem "bulma-rails", "~> 0.5.2"
+
+gem "font-awesome-rails", "~> 4.7.0.2"
+
 
 
 group :development, :test do
