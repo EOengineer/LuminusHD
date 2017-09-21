@@ -17,15 +17,18 @@ class AlbumCarousel extends React.Component {
   }
 
   componentDidMount() {
+    let slider         = this.refs.slider;
     let carouselConfig = {
       infinite: false,
       slidesToShow: 3,
       slidesToScroll: 1,
       arrows: true,
       dots: true
-    }
+    };
 
-    $('.slider').slick(carouselConfig)
+
+
+    $(slider).slick(carouselConfig)
   }
 
   render() {
@@ -37,7 +40,7 @@ class AlbumCarousel extends React.Component {
         <div className="container">
           <h1 className="title">{carouselTitle}</h1>
 
-          <div className="slider">
+          <div ref="slider">
             {this.listAlbums()}
           </div>
         </div>
