@@ -10,8 +10,7 @@
 console.log('Hello World from Webpacker')
 
 // global styles
-import "bulma/sass/bulma.sass";
-import "bulma";
+import "bulma/bulma.sass";
 import 'font-awesome/scss/font-awesome.scss';
 
 // carousel syles
