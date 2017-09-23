@@ -6,11 +6,12 @@ class CreateAlbums < ActiveRecord::Migration[5.1]
       t.text :description, null: false
       t.text :subdescription
       t.datetime :release_date
-      t.integer :artist_id, null: false, index: true
+      t.integer :artist_id, null: false
       t.integer :label_id, null: false, index: true
       t.boolean :available, default: false
 
       t.timestamps
     end
+    add_index :albums, [:title, :artist_id], unique: true
   end
 end

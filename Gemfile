@@ -8,10 +8,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
-# Use Puma as the app server
-gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,10 +29,23 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+############################################ infrastructure #########################################
+
+gem 'rails_12factor', group: :production
+# Use Puma as the app server
+gem 'puma', '~> 3.7'
+# Use postgresql as the database for Active Record
+gem 'pg', '~> 0.18'
+
 
 ############################################ Our Gems ###############################################
 gem 'acts_as_list', '~> 0.9.7'
 
+gem "bulma-rails", "~> 0.5.2"
+
+gem "font-awesome-rails", "~> 4.7.0.2"
+
+gem 'webpacker', '~> 3.0'
 
 
 group :development, :test do
