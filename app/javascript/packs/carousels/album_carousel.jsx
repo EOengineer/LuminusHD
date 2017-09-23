@@ -12,7 +12,7 @@ class AlbumCarousel extends React.Component {
 
   listAlbums = () => {
     return this.props.albums.map((album, i) => {
-      return <CarouselAlbum key={i} title={album} />
+      return <CarouselAlbum key={i} album={album} />
     })
   }
 
