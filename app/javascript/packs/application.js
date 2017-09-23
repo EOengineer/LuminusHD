@@ -9,3 +9,12 @@
 
 console.log('Hello World from Webpacker')
 
+// global styles
+import "bulma/sass/bulma.sass";
+import "bulma";
+import 'font-awesome/scss/font-awesome.scss';
+
+// carousel syles
+import 'slick-carousel/slick/slick.scss';
+import 'slick-carousel/slick/slick-theme.scss';
+import './styles/albums/overrides.scss';

@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 
-import $ from 'JQuery';
-
 class CarouselAlbum extends React.Component {
 
   render() {
