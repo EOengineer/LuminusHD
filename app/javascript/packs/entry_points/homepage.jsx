@@ -36,16 +36,19 @@ class HomePage extends React.Component {
         />
 
         <AlbumCarousel
+          key={"New Releases"}
           carouselTitle={"New Releases"}
           albums={this.state.newReleases}
         />
 
         <AlbumCarousel
+          key={"Featured Albums"}
           carouselTitle={"Featured Albums"}
           albums={this.state.newReleases}
         />
 
         <AlbumCarousel
+          key={"Critically Acclaimed"}
           carouselTitle={"Critically Acclaimed"}
           albums={this.state.newReleases}
         />

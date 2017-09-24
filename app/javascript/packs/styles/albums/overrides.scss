@@ -20,3 +20,15 @@
   color: gray;
 }
 
+.slick-slide {
+    outline: none
+}
+
+
+// flexbox overrides for slick- carousel
+
+*{
+min-height: 0;
+min-width: 0;
+}
+

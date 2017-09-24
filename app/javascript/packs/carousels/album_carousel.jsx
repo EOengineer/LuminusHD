@@ -12,7 +12,7 @@ class AlbumCarousel extends React.Component {
 
   listAlbums = () => {
     return this.props.albums.map((album, i) => {
-      return <CarouselAlbum key={i} album={album} />
+      return <CarouselAlbum key={i + Math.random()} album={album} />
     })
   }
 
@@ -77,7 +77,9 @@ class AlbumCarousel extends React.Component {
       slidesToScroll: 1,
       arrows: true,
       dots: true,
-      adaptiveWidth: true,
+      adaptiveWidth: false,
+      focusOnSelect: false,
+      mobileFirst: true,
       responsive: this.buildResponsiveSettings()
     };
 
@@ -90,7 +92,7 @@ class AlbumCarousel extends React.Component {
     let carouselTitle = this.props.carouselTitle
 
     return (
-      <section className="section is-bold is-light">
+      <div className="section is-bold is-light">
         <div className="container">
           <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
 
@@ -98,7 +100,7 @@ class AlbumCarousel extends React.Component {
             {this.listAlbums()}
           </div>
         </div>
-      </section>
+      </div>
     )
   }
 }
