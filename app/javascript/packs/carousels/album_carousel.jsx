@@ -100,7 +100,7 @@ class AlbumCarousel extends React.Component {
     let carouselTitle = this.props.carouselTitle
 
     return (
-      <div className="">
+      <div className="carousel">
         <div className="container">
           <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
 

@@ -1,4 +1,5 @@
 .carousel {
+  padding-top: 2em;
 
   &-item {
     text-align: center;
@@ -8,6 +9,7 @@
 
     &:hover {
       transform: scale(1.1);
+      cursor: pointer;
     }
   }
 

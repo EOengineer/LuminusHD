@@ -45,11 +45,11 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        {false && <Hero
+        <Hero
           mainTitle={"Luminus"}
           enhancedTitle={"HD"}
           subtitle={"The standard in High Res Audio"}
-        />}
+        />
 
         <AlbumCarousel
           key={"New Releases"}
