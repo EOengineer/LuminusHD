@@ -85,6 +85,14 @@ class AlbumCarousel extends React.Component {
 
 
     $(slider).slick(carouselConfig)
+
+    $(window).resize(function () {
+      $(slider).slick('resize');
+    });
+
+    $(window).on('orientationchange', function () {
+        $('.slider').slick('resize');
+    });
   }
 
   render() {
@@ -92,11 +100,11 @@ class AlbumCarousel extends React.Component {
     let carouselTitle = this.props.carouselTitle
 
     return (
-      <div className="section is-bold is-light">
+      <div className="">
         <div className="container">
           <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
 
-          <div ref="slider">
+          <div className="slider" ref="slider">
             {this.listAlbums()}
           </div>
         </div>

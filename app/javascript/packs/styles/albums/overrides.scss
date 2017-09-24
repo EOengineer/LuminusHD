@@ -3,7 +3,7 @@
   &-item {
     text-align: center;
     margin: 1em;
-    min-height: 15em;
+    //min-height: 15em;
     transition: all 0.3s;
 
     &:hover {
@@ -21,13 +21,19 @@
 }
 
 .slick-slide {
-    outline: none
+  outline: none;
+  min-height: 0px;
+
+  img{
+    height: auto;
+    width: 100%;
+  }
 }
 
 
 // flexbox overrides for slick- carousel
 
-*{
+div {
 min-height: 0;
 min-width: 0;
 }
