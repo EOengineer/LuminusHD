@@ -92,7 +92,7 @@ class AlbumCarousel extends React.Component {
     return (
       <section className="section is-bold is-light">
         <div className="container">
-          <h1 className="title">{carouselTitle}</h1>
+          <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
 
           <div ref="slider">
             {this.listAlbums()}
