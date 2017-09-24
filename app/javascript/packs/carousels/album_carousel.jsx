@@ -16,14 +16,23 @@ class AlbumCarousel extends React.Component {
     })
   }
 
-  buildResponsiveSettings = () => {
+  componentDidMount() {
+    var sliderIdName = this.props.carouselTitle;
+    var sliderId     = 'div[id="' + sliderIdName + '"]';
 
-    let settings = [
+    $(sliderId).slick({
+      adaptiveWidth: false,
+      focusOnSelect: false,
+      variableWidth: false,
+      responsive: [
       {
         // fullhd
         breakpoint: 3000,
         settings: {
+          infinite: false,
+          arrows: true,
           slidesToShow: 5,
+          slidesToScroll: 1,
           dots: true
         }
       },
@@ -31,7 +40,10 @@ class AlbumCarousel extends React.Component {
         // widescreen
         breakpoint: 1392,
         settings: {
+          infinite: false,
+          arrows: true,
           slidesToShow: 4,
+          slidesToScroll: 1,
           dots: true
         }
       },
@@ -39,7 +51,10 @@ class AlbumCarousel extends React.Component {
         // desktop
         breakpoint: 1200,
         settings: {
+          infinite: false,
+          arrows: true,
           slidesToShow: 3,
+          slidesToScroll: 1,
           dots: true
         }
       },
@@ -47,7 +62,10 @@ class AlbumCarousel extends React.Component {
         // tablet
         breakpoint: 1008,
         settings: {
+          infinite: false,
+          arrows: true,
           slidesToShow: 3,
+          slidesToScroll: 1,
           dots: true
         }
       },
@@ -55,59 +73,44 @@ class AlbumCarousel extends React.Component {
         //most phones
         breakpoint: 768,
         settings: {
+          infinite: false,
+          arrows: true,
           slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true
         }
       },
       {
         //most phones
         breakpoint: 500,
         settings: {
+          infinite: false,
+          arrows: true,
           slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true
         }
       },
     ]
-
-    return settings;
-  }
-
-  componentDidMount() {
-    let slider         = this.refs.slider;
-    let carouselConfig = {
-      infinite: false,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: true,
-      adaptiveWidth: false,
-      focusOnSelect: false,
-      mobileFirst: true,
-      responsive: this.buildResponsiveSettings()
-    };
-
-
-    $(slider).slick(carouselConfig)
-
-    $(window).resize(function () {
-      $(slider).slick('resize');
     });
 
-    $(window).on('orientationchange', function () {
-        $('.slider').slick('resize');
-    });
+
+
+
   }
+
 
   render() {
 
     let carouselTitle = this.props.carouselTitle
 
     return (
-      <div className="carousel">
-        <div className="container">
+      <div key={carouselTitle} className="carousel container">
           <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
 
-          <div className="slider" ref="slider">
+          <div id={carouselTitle} className="slider">
             {this.listAlbums()}
           </div>
-        </div>
       </div>
     )
   }

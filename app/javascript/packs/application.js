@@ -6,8 +6,9 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
-
-console.log('Hello World from Webpacker')
+import $ from 'jquery';
+import 'slick-carousel';
+console.log('Hello World')
 
 // global styles
 import "bulma/bulma.sass";
@@ -17,3 +18,4 @@ import 'font-awesome/scss/font-awesome.scss';
 import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel/slick/slick-theme.scss';
 import './styles/albums/overrides.scss';
+
