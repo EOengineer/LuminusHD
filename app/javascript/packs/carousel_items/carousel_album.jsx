@@ -8,11 +8,11 @@ class CarouselAlbum extends React.Component {
   render() {
 
     return (
-      <div className="carousel-item carousel-album">
+      <div className="carousel-item carousel-album option">
           <h1 className="title is-size-7">{this.props.album.title}</h1>
 
           <div className="image is-square">
-            <img src={this.props.album.image_url} />
+            <img src={this.props.album.image_url}></img>
           </div>
 
       </div>
