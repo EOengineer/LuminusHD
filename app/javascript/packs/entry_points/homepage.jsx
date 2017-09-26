@@ -5,13 +5,6 @@ import PropTypes from 'prop-types'
 import Hero from '../general_ui/hero';
 import AlbumCarousel from '../carousels/album_carousel';
 
-import $ from 'jquery';
-import 'slick-carousel';
-
-import 'slick-carousel/slick/slick.scss';
-import 'slick-carousel/slick/slick-theme.scss';
-import '../styles/albums/overrides.scss';
-
 class HomePage extends React.Component {
 
   constructor(props) {
@@ -45,130 +38,6 @@ class HomePage extends React.Component {
     }
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   $(window).on('resize orientationchange', function() {
-  //     $('.js-slider').slick('unslick');
-  //     $('.js-slider').slick('resize');
-  // //$('.js-slider').slick('setPosition');
-  //   });
-  // }
-
-  componentDidMount() {
-
-    let responsive = [
-        {
-          // fullhd
-          breakpoint: 3000,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          // widescreen
-          breakpoint: 1392,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          // desktop
-          breakpoint: 1200,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          // tablet
-          breakpoint: 1008,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          //most phones
-          breakpoint: 768,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          //most phones
-          breakpoint: 500,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-      ]
-
-
-    // call api and set album state
-    $(document).ready(function() {
-
-      $('#New-Releases' ).slick({
-        adaptiveWidth: false,
-        focusOnSelect: false,
-        variableWidth: false,
-        slide: "#New-Releases .option",
-        appendArrows: "#New-Releases .prev_next",
-        prevArrow: '<a>Previous</a>',
-        nextArrow: '<a>Next</a>',
-        responsive: responsive
-      });
-
-      $('#Featured-Releases' ).slick({
-        adaptiveWidth: false,
-        focusOnSelect: false,
-        variableWidth: false,
-        slide: "#Featured-Releases .option",
-        appendArrows: "#Featured-Releases .prev_next",
-        prevArrow: '<a>Previous</a>',
-        nextArrow: '<a>Next</a>',
-        responsive: responsive
-      });
-
-
-      $('#Critically-Acclaimed' ).slick({
-        adaptiveWidth: false,
-        focusOnSelect: false,
-        variableWidth: false,
-        slide: "#Critically-Acclaimed .option",
-        appendArrows: "#Critically-Acclaimed .prev_next",
-        prevArrow: '<a>Previous</a>',
-        nextArrow: '<a>Next</a>',
-        responsive: responsive
-      });
-    });
-
-    $(window).on('resize orientationchange', function() {
-      $('#New-Releases').slick('resize');
-      $('#Featered-Releases').slick('resize');
-      $('#Critically-Acclaimed').slick('resize');
-    });
-  }
 
 
   render() {
@@ -200,6 +69,7 @@ class HomePage extends React.Component {
           carouselTitle={"Critically Acclaimed"}
           albums={this.state.acclaimedReleases}
         />
+
       </div>
     )
   }
@@ -208,6 +78,7 @@ class HomePage extends React.Component {
 export default HomePage;
 
 document.addEventListener('DOMContentLoaded', () => {
+
   ReactDOM.render(
     <HomePage />,
     document.body.appendChild(document.createElement('div')),

@@ -1,28 +1,28 @@
-// .carousel {
-//   padding-top: 2em;
+.carousel {
+  padding-top: 2em;
 
-//   &-item {
-//     text-align: center;
-//     margin: 1em;
-//     transition: all 0.3s;
+  &-item {
+    text-align: center;
+    margin: 1em;
+    transition: all 0.3s;
 
-//     &:hover {
-//       transform: scale(1.1);
-//       cursor: pointer;
-//     }
-//   }
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
 
-//   &-title {
-//     padding-left: 1em;
-//   }
-// }
+  &-title {
+    padding-left: 1em;
+  }
+}
 
 .slick-arrow:before, .slick-arrow:after {
   color: gray;
 }
 
 .slick-slide {
-  //outline: none;
+  outline: none;
   min-height: 0px;
   min-width: 0px;
   height: 325px;
