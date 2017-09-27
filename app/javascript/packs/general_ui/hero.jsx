@@ -11,7 +11,7 @@ class Hero extends React.Component {
     let subtitle      = this.props.subtitle
 
     return(
-      <section className="hero is-medium is-dark is-bold">
+      <section className="hero is-dark">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">

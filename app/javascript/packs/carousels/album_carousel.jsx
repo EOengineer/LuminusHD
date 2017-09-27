@@ -2,8 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import 'slick-carousel/slick/slick.scss';
+import 'slick-carousel/slick/slick-theme.scss';
+import '../styles/albums/overrides.scss';
+
 import $ from 'jquery';
 import 'slick-carousel';
+
+
 
 
 import CarouselAlbum from '../carousel_items/carousel_album';
@@ -12,93 +18,118 @@ class AlbumCarousel extends React.Component {
 
   listAlbums = () => {
     return this.props.albums.map((album, i) => {
-      return <CarouselAlbum key={i} title={album} />
+      return <CarouselAlbum key={i + Math.random()} album={album} />
     })
   }
 
-  buildResponsiveSettings = () => {
-
-    let settings = [
-      {
-        // fullhd
-        breakpoint: 3000,
-        settings: {
-          slidesToShow: 5,
-          dots: true
-        }
-      },
-      {
-        // widescreen
-        breakpoint: 1392,
-        settings: {
-          slidesToShow: 4,
-          dots: true
-        }
-      },
-      {
-        // desktop
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-          dots: true
-        }
-      },
-      {
-        // tablet
-        breakpoint: 1008,
-        settings: {
-          slidesToShow: 3,
-          dots: true
-        }
-      },
-      {
-        //most phones
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        }
-      },
-      {
-        //most phones
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 1,
-        }
-      },
-    ]
-
-    return settings;
+  getResponsiveConfig() {
+    let responsive = [
+        {
+          // fullhd
+          breakpoint: 3000,
+          settings: {
+            infinite: false,
+            arrows: true,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            dots: true
+          }
+        },
+        {
+          // widescreen
+          breakpoint: 1392,
+          settings: {
+            infinite: false,
+            arrows: true,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            dots: true
+          }
+        },
+        {
+          // desktop
+          breakpoint: 1200,
+          settings: {
+            infinite: false,
+            arrows: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            dots: true
+          }
+        },
+        {
+          // tablet
+          breakpoint: 1008,
+          settings: {
+            infinite: false,
+            arrows: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            dots: true
+          }
+        },
+        {
+          //most phones
+          breakpoint: 768,
+          settings: {
+            infinite: false,
+            arrows: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            dots: true
+          }
+        },
+        {
+          //most phones
+          breakpoint: 500,
+          settings: {
+            infinite: false,
+            arrows: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: true
+          }
+        },
+      ]
+    return responsive
   }
+
 
   componentDidMount() {
-    let slider         = this.refs.slider;
-    let carouselConfig = {
-      infinite: false,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: true,
-      adaptiveWidth: true,
-      responsive: this.buildResponsiveSettings()
-    };
+    this.$el = $(this.el);
+    let elementId = this.$el[0].id
 
-
-    $(slider).slick(carouselConfig)
+    this.$el.slick({
+      adaptiveWidth: false,
+      focusOnSelect: false,
+      variableWidth: false,
+      accessibility: false,
+      slide: "#" + elementId + " .option",
+      //appendArrows: "#" + elementId + " .prev_next",
+      //prevArrow: '<a>Previous</a>',
+      //nextArrow: '<a>Next</a>',
+      responsive: this.getResponsiveConfig()
+    });
   }
+
 
   render() {
 
     let carouselTitle = this.props.carouselTitle
+    let carouselKey   = this.props.identifier
 
     return (
-      <section className="section is-bold is-light">
-        <div className="container">
-          <h1 className="title">{carouselTitle}</h1>
+      <div key={carouselKey} className="carousel container">
+          <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
 
-          <div ref="slider">
+
+          <div id={carouselKey} ref={el => this.el = el} className="js-slider">
             {this.listAlbums()}
           </div>
-        </div>
-      </section>
+
+          <div className="prev_next"></div>
+
+      </div>
     )
   }
 }
