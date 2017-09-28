@@ -96,7 +96,7 @@ class AlbumCarousel extends React.Component {
 
 
   componentDidMount() {
-    this.$el = $(this.el);
+    this.$el      = $(this.el);
     let elementId = this.$el[0].id
 
     this.$el.slick({
@@ -104,10 +104,9 @@ class AlbumCarousel extends React.Component {
       focusOnSelect: false,
       variableWidth: false,
       accessibility: false,
+      touchMove: true,
+      swipe: true,
       slide: "#" + elementId + " .option",
-      //appendArrows: "#" + elementId + " .prev_next",
-      //prevArrow: '<a>Previous</a>',
-      //nextArrow: '<a>Next</a>',
       responsive: this.getResponsiveConfig()
     });
   }
