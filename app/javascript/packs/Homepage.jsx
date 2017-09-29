@@ -9,21 +9,34 @@ import { newReleases,
 import Hero from './general_ui/hero';
 import AlbumCarousel from './carousels/album_carousel';
 
+
 class HomePage extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
       loaded: false,
-      newReleases: newReleases,
-      featuredReleases: featuredReleases,
-      acclaimedReleases: acclaimedReleases
+      newReleases: [],
+      featuredReleases: [],
+      acclaimedReleases: []
     }
   }
 
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        loaded: true,
+        newReleases: newReleases,
+        featuredReleases: featuredReleases,
+        acclaimedReleases: acclaimedReleases
+      })
+    }, 100);
+  }
 
   render() {
+
+    let cutoff = -1
     return (
       <div>
         <Hero
@@ -32,12 +45,15 @@ class HomePage extends React.Component {
           subtitle={"The standard in High Res Audio"}
         />
 
+
         <AlbumCarousel
           key={"New-Releases"}
           identifier={"New-Releases"}
           carouselTitle={"New Releases"}
           albums={this.state.newReleases}
         />
+
+
 
         <AlbumCarousel
           key={"Featured-Releases"}
@@ -52,6 +68,7 @@ class HomePage extends React.Component {
           carouselTitle={"Critically Acclaimed"}
           albums={this.state.acclaimedReleases}
         />
+
 
         <AlbumCarousel
           key={"Pink-Floyd"}

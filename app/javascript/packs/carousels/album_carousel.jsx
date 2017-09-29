@@ -9,7 +9,7 @@ import '../styles/overrides.scss';
 import $ from 'jquery';
 import 'slick-carousel';
 
-
+import { BeatLoader, CircleLoader } from 'react-spinners';
 
 
 import CarouselAlbum from '../carousel_items/carousel_album';
@@ -94,21 +94,23 @@ class AlbumCarousel extends React.Component {
     return responsive
   }
 
-
-  componentDidMount() {
+  componentDidUpdate(prevProps, prevState) {
     this.$el      = $(this.el);
-    let elementId = this.$el[0].id
 
-    this.$el.slick({
-      adaptiveWidth: false,
-      focusOnSelect: false,
-      variableWidth: false,
-      accessibility: false,
-      touchMove: true,
-      swipe: true,
-      slide: "#" + elementId + " .option",
-      responsive: this.getResponsiveConfig()
-    });
+    if (this.$el[0] && !this.$el.hasClass('slick-initalized')) {
+      let elementId = this.$el[0].id
+
+      this.$el.slick({
+        adaptiveWidth: false,
+        focusOnSelect: false,
+        variableWidth: false,
+        accessibility: false,
+        touchMove: true,
+        swipe: true,
+        responsive: this.getResponsiveConfig()
+      });
+
+    }
   }
 
 
@@ -116,17 +118,32 @@ class AlbumCarousel extends React.Component {
 
     let carouselTitle = this.props.carouselTitle
     let carouselKey   = this.props.identifier
+    let loaded        = this.props.albums.length > 0
 
     return (
       <div key={carouselKey} className="carousel container">
-          <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
+          {loaded ?
+            <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1> :
+            <BeatLoader
+              color={'#6EE0C8'}
+              size={10}
+              margin={5}
+            />}
 
 
-          <div id={carouselKey} ref={el => this.el = el} className="js-slider">
-            {this.listAlbums()}
-          </div>
+          {loaded ?
+            <div id={carouselKey} ref={el => this.el = el} className="js-slider">
+              {this.listAlbums()}
+            </div> :
+            <div style={{width: '0px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10em'}}>
+              <CircleLoader
+                size={100}
+                color={'red'}
+                loading={!loaded}
+              />
+            </div>
+          }
 
-          <div className="prev_next"></div>
 
       </div>
     )
