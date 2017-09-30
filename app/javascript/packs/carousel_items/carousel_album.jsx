@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import { BeatLoader, CircleLoader } from 'react-spinners';
 
 class CarouselAlbum extends React.Component {
 

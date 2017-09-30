@@ -10,15 +10,14 @@ import $ from 'jquery';
 import 'slick-carousel';
 
 import { BeatLoader, CircleLoader } from 'react-spinners';
+import CarouselAlbumLoader from '../carousel_items/carousel_album_loader';
 
 
-import CarouselAlbum from '../carousel_items/carousel_album';
+class CarouselLoader extends React.Component {
 
-class AlbumCarousel extends React.Component {
-
-  listAlbums = () => {
-    return this.props.albums.map((album, i) => {
-      return <CarouselAlbum key={i + Math.random()} album={album} />
+  listAlbumLoaders = () => {
+    return [0, 1, 2, 3, 4, 5].map((i) => {
+      return <CarouselAlbumLoader key={i} />
     })
   }
 
@@ -124,28 +123,16 @@ class AlbumCarousel extends React.Component {
 
   render() {
 
-    let carouselTitle = this.props.carouselTitle
-    let carouselKey   = this.props.identifier
-    let loaded        = this.props.albums.length > 0
-
     return (
-      <div key={carouselKey} className="carousel container">
-          {loaded &&
-            <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
-          }
+      <div className="carousel container">
 
-
-
-          {loaded &&
-            <div id={carouselKey} ref={el => this.el = el} className="js-slider">
-              {this.listAlbums()}
-            </div>
-          }
-
+        <div ref={el => this.el = el} className="js-slider">
+          {this.listAlbumLoaders()}
+        </div>
 
       </div>
     )
   }
 }
 
-export default AlbumCarousel;
+export default CarouselLoader;
