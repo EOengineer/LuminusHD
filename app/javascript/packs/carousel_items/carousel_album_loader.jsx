@@ -9,7 +9,7 @@ class CarouselAlbumLoader extends React.Component {
   render() {
     return (
       <div className="carousel-item carousel-album option">
-        <div style={{width: '0px', marginLeft: 'auto', marginRight: 'auto', marginTop: '10em', marginBottom: '10em'}}>
+        <div style={{width: '0px', marginLeft: 'auto', marginRight: 'auto', marginTop: '14em', marginBottom: '10em'}}>
           <CircleLoader
             size={20}
             color={'red'}
