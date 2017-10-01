@@ -2,12 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+// Mocked data
 import { newReleases,
          featuredReleases,
          acclaimedReleases } from './data/albums';
 
+// Components
 import Hero from './general_ui/hero';
 import AlbumCarousel from './carousels/album_carousel';
+import CarouselLoader from './carousels/carousel_loader';
+
 
 
 class HomePage extends React.Component {
@@ -31,12 +35,13 @@ class HomePage extends React.Component {
         featuredReleases: featuredReleases,
         acclaimedReleases: acclaimedReleases
       })
-    }, 100);
+    }, 300);
   }
 
   render() {
 
-    let cutoff = -1
+    let loaded = this.state.loaded
+
     return (
       <div>
         <Hero
@@ -46,28 +51,28 @@ class HomePage extends React.Component {
         />
 
 
-        <AlbumCarousel
+        {loaded ? <AlbumCarousel
           key={"New-Releases"}
           identifier={"New-Releases"}
           carouselTitle={"New Releases"}
           albums={this.state.newReleases}
-        />
+        /> : <CarouselLoader />}
 
 
-
-        <AlbumCarousel
+        {loaded ? <AlbumCarousel
           key={"Featured-Releases"}
           identifier={"Featured-Releases"}
           carouselTitle={"Featured Albums"}
           albums={this.state.featuredReleases}
-        />
+        /> : <CarouselLoader />}
 
-        <AlbumCarousel
+
+        {loaded ? <AlbumCarousel
           key={"Critically-Acclaimed"}
           identifier={"Critically-Acclaimed"}
           carouselTitle={"Critically Acclaimed"}
           albums={this.state.acclaimedReleases}
-        />
+        /> : <CarouselLoader />}
 
 
         <AlbumCarousel
