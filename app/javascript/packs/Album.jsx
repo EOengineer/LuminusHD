@@ -4,12 +4,10 @@ import PropTypes from 'prop-types'
 
 // Mocked data
 import { fullStore } from './data/albums';
+import { sliderImages } from './data/images';
 
-// // Components
-// import Hero from './general_ui/hero';
-// import AlbumCarousel from './carousels/album_carousel';
-// import CarouselLoader from './carousels/carousel_loader';
-
+import CarouselLoader from './carousels/carousel_loader';
+import ImageCarousel from './carousels/image_carousel';
 
 
 class Album extends React.Component {
@@ -17,7 +15,9 @@ class Album extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      album: null
+      album: null,
+      albumArt: [],
+      selectedTab: "art"
     }
   }
 
@@ -31,7 +31,12 @@ class Album extends React.Component {
       // call api here if store doesnt have album for some reason
     }
 
-    this.setState({album: currentAlbum[0]});
+    this.setState({album: currentAlbum[0], albumArt: sliderImages });
+  }
+
+  updateSelectedTab(selectedTab) {
+
+    this.setState({selectedTab: selectedTab})
   }
 
 
@@ -41,26 +46,23 @@ class Album extends React.Component {
 
   render() {
 
-    console.log(this.props)
     let album = this.state.album
     let albumImageStyle = {
-      //width: '350px',
-      //height: '350px',
       marginLeft: 'auto',
       marginRight: 'auto'
     }
 
     return (
       <div>
-        <section className="hero is-medium is-dark">
+        <section className="section">
           {album &&
-            <div className="hero-body">
+            <div className="content">
               <div className="container">
                 <div className="columns">
 
                   <div className="column">
                     <div style={albumImageStyle} className="image is-square">
-                      <img src={album.image_url}></img>
+                      <img style={{marginLeft: 'auto', marginRight: 'auto'}} src={album.image_url}></img>
                     </div>
                   </div>
 
@@ -76,6 +78,7 @@ class Album extends React.Component {
                     <p> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
                     <br />
                     <p>Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
+
                   </div>
 
                 </div>
@@ -84,34 +87,38 @@ class Album extends React.Component {
           }
         </section>
 
-        <div className="tabs is-centered is-boxed">
-          <ul>
-            <li className="is-active">
-              <a>
-                <span className="icon is-small"><i className="fa fa-image"></i></span>
-                <span>Pictures</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span className="icon is-small"><i className="fa fa-music"></i></span>
-                <span>Music</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span className="icon is-small"><i className="fa fa-film"></i></span>
-                <span>Videos</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <span className="icon is-small"><i className="fa fa-file-text-o"></i></span>
-                <span>Documents</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <section>
+          <div className="tabs is-centered is-boxed">
+            <ul>
+            <li className={this.state.selectedTab === "art" ? "is-active" : ""} onClick={this.updateSelectedTab.bind(this, "art")}>
+                <a>
+                  <span id="art" className="icon is-small"><i className="fa fa-film"></i></span>
+                  <span>Album Art</span>
+                </a>
+              </li>
+              <li className={this.state.selectedTab === "music" ? "is-active" : ""} onClick={this.updateSelectedTab.bind(this, "music")}>
+                <a>
+                  <span id="music" className="icon is-small"><i className="fa fa-music"></i></span>
+                  <span>Music</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {this.state.selectedTab === "art" &&
+          <div className="container" id="art-content">
+            <h1 className="title is-1">Here will be the contents of the "Album Art" tab</h1>
+            {this.state.albumArt.length > 0 ? <ImageCarousel identifier="art" carouselTitle="Album Artwork" images={this.state.albumArt} /> : <CarouselLoader />}
+          </div>
+          }
+
+          {this.state.selectedTab === "music" &&
+          <div className="container">
+            <h1 className="title is-1">Here will be the contents of the "Music" tab</h1>
+          </div>
+          }
+
+        </section>
 
       </div>
     )

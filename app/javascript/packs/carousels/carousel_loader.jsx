@@ -6,6 +6,8 @@ import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel/slick/slick-theme.scss';
 import '../styles/overrides.scss';
 
+import { responsiveSettings } from '../data/responsive';
+
 import $ from 'jquery';
 import 'slick-carousel';
 
@@ -21,78 +23,6 @@ class CarouselLoader extends React.Component {
     })
   }
 
-  getResponsiveConfig() {
-    let responsive = [
-        {
-          // fullhd
-          breakpoint: 3000,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          // widescreen
-          breakpoint: 1392,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          // desktop
-          breakpoint: 1200,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          // tablet
-          breakpoint: 1008,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          //most phones
-          breakpoint: 768,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-        {
-          //most phones
-          breakpoint: 500,
-          settings: {
-            infinite: false,
-            arrows: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: true
-          }
-        },
-      ]
-    return responsive
-  }
-
   initializeSlider() {
     this.$el      = $(this.el);
 
@@ -106,7 +36,7 @@ class CarouselLoader extends React.Component {
         accessibility: false,
         touchMove: true,
         swipe: true,
-        responsive: this.getResponsiveConfig()
+        responsive: responsiveSettings
       });
 
     }

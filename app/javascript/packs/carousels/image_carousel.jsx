@@ -17,18 +17,17 @@ import 'slick-carousel';
 
 
 // Components
-import CarouselAlbum from '../carousel_items/carousel_album';
+import CarouselImage from '../carousel_items/carousel_image';
 
 
 
-class AlbumCarousel extends React.Component {
+class ImageCarousel extends React.Component {
 
-  listAlbums = () => {
-    return this.props.albums.map((album, i) => {
-      return <CarouselAlbum key={i + Math.random()} album={album} />
+  listImages = () => {
+    return this.props.images.map((image, i) => {
+      return <CarouselImage key={i + Math.random()} image={image} />
     })
   }
-
 
   initializeSlider() {
     this.$el      = $(this.el);
@@ -53,16 +52,11 @@ class AlbumCarousel extends React.Component {
     this.initializeSlider()
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    this.initializeSlider()
-  }
-
-
   render() {
 
     let carouselTitle = this.props.carouselTitle
     let carouselKey   = this.props.identifier
-    let loaded        = this.props.albums.length > 0
+    let loaded        = this.props.images.length > 0
 
     return (
       <div key={carouselKey} className="carousel container">
@@ -74,7 +68,7 @@ class AlbumCarousel extends React.Component {
 
           {loaded &&
             <div id={carouselKey} ref={el => this.el = el} className="js-slider">
-              {this.listAlbums()}
+              {this.listImages()}
             </div>
           }
 
@@ -84,4 +78,4 @@ class AlbumCarousel extends React.Component {
   }
 }
 
-export default AlbumCarousel;
+export default ImageCarousel;
