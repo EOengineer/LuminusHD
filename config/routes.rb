@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :albums
   end
 
+  get '*unmatched_route', to: 'home#index'
+
 end
