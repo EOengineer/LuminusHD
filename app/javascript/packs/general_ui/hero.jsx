@@ -9,16 +9,18 @@ class Hero extends React.Component {
     let mainTitle     = this.props.mainTitle
     let enhancedTitle = this.props.enhancedTitle
     let subtitle      = this.props.subtitle
+    let background    = { background: 'url("https://static.pexels.com/photos/164828/pexels-photo-164828.jpeg") center center', backgroundSize: 'cover' }
+
 
     return(
-      <section className="hero is-dark">
+      <section style={background} className="hero is-medium is-dark">
         <div className="hero-body">
-          <div className="container">
+          <div className="container" >
             <h1 className="title">
               <span className="home-hero-thin">{mainTitle}</span>
-              <span className="home-hero-enhanced">{enhancedTitle}</span>
+              <span style={{color: 'black'}} className="home-hero-enhanced">{enhancedTitle}</span>
             </h1>
-            <h2 className="subtitle">
+            <h2 style={{color: 'black'}} className="subtitle">
               {subtitle}
             </h2>
           </div>
