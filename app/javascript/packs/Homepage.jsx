@@ -50,7 +50,6 @@ class HomePage extends React.Component {
           subtitle={"The standard in High Res Audio"}
         />
 
-
         {loaded ? <AlbumCarousel
           key={"New-Releases"}
           identifier={"New-Releases"}
