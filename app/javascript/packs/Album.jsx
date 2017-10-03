@@ -5,10 +5,11 @@ import PropTypes from 'prop-types'
 // Mocked data
 import { fullStore } from './data/albums';
 import { sliderImages } from './data/images';
+import { albumTracks } from './data/tracks';
 
 import CarouselLoader from './carousels/carousel_loader';
 import ImageCarousel from './carousels/image_carousel';
-
+import TrackTable from './general_ui/track_table';
 
 class Album extends React.Component {
 
@@ -17,6 +18,7 @@ class Album extends React.Component {
     this.state = {
       album: null,
       albumArt: [],
+      albumTracks: albumTracks(),
       selectedTab: "art"
     }
   }
@@ -115,6 +117,7 @@ class Album extends React.Component {
           {this.state.selectedTab === "music" &&
           <div className="container">
             <h1 className="title is-1">Here will be the contents of the "Music" tab</h1>
+            {this.state.albumTracks.length > 0 ? <TrackTable tracks={this.state.albumTracks} /> : <div>loading</div>}
           </div>
           }
 
