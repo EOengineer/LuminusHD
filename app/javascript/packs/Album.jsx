@@ -56,15 +56,15 @@ class Album extends React.Component {
 
     return (
       <div>
-        <section className="section">
+        <section className="section restrict-height is-clearfix">
           {album &&
             <div className="content">
               <div className="container">
-                <div className="columns">
+                <div className="columns restrict-height">
 
                   <div className="column">
-                    <div style={albumImageStyle} className="image is-square">
-                      <img style={{marginLeft: 'auto', marginRight: 'auto'}} src={album.image_url}></img>
+                    <div style={albumImageStyle} className="image restrict-height">
+                      <img className="restrict-width" style={{marginLeft: 'auto', marginRight: 'auto'}} src={album.image_url}></img>
                     </div>
                   </div>
 
@@ -89,7 +89,7 @@ class Album extends React.Component {
           }
         </section>
 
-        <section>
+        <section className="section">
           <div className="tabs is-centered is-boxed">
             <ul>
             <li className={this.state.selectedTab === "art" ? "is-active" : ""} onClick={this.updateSelectedTab.bind(this, "art")}>
@@ -108,15 +108,15 @@ class Album extends React.Component {
           </div>
 
           {this.state.selectedTab === "art" &&
-          <div className="container" id="art-content">
-            <h1 className="title is-1">Here will be the contents of the "Album Art" tab</h1>
+          <div className="container restrict has-text-centered" id="art-content">
+            <h1 className="title is-4">View the high quality album art included with your purchase.</h1>
             {this.state.albumArt.length > 0 ? <ImageCarousel identifier="art" carouselTitle="Album Artwork" images={this.state.albumArt} /> : <CarouselLoader />}
           </div>
           }
 
           {this.state.selectedTab === "music" &&
-          <div className="container">
-            <h1 className="title is-1">Here will be the contents of the "Music" tab</h1>
+          <div className="container restrict has-text-centered">
+            <h1 className="title is-4">View the available tracks and formats for this album.</h1>
             {this.state.albumTracks.length > 0 ? <TrackTable tracks={this.state.albumTracks} /> : <div>loading</div>}
           </div>
           }

@@ -28,6 +28,16 @@
   outline: none;
 }
 
+.restrict-width {
+  max-width: 400px;
+}
+
+.restrict-height {
+  @media only screen and (min-width: 769px) {
+    max-height: 600px;
+  }
+}
+
 
 
 // flexbox overrides for slick- carousel
