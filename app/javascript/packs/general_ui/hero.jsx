@@ -9,7 +9,7 @@ class Hero extends React.Component {
     let mainTitle     = this.props.mainTitle
     let enhancedTitle = this.props.enhancedTitle
     let subtitle      = this.props.subtitle
-    let background    = { background: 'url("https://static.pexels.com/photos/164828/pexels-photo-164828.jpeg") center center', backgroundSize: 'cover' }
+    let background    = { background: 'url(' + this.props.imageUrl + ') center center', backgroundSize: 'cover' }
 
     return(
       <section style={background} className="hero is-medium is-dark">

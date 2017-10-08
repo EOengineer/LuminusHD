@@ -47,6 +47,7 @@ class HomePage extends React.Component {
         <Hero
           mainTitle={"Luminus"}
           enhancedTitle={"HD"}
+          imageUrl={"https://static.pexels.com/photos/164828/pexels-photo-164828.jpeg"}
           subtitle={"The standard in High Res Audio"}
         />
 

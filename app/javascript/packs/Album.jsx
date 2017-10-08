@@ -32,7 +32,7 @@ class Album extends React.Component {
     if (!currentAlbum) {
       // call api here if store doesnt have album for some reason
     }
-
+    console.log("current album", currentAlbum)
     this.setState({album: currentAlbum[0], albumArt: sliderImages });
   }
 
