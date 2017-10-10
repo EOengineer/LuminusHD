@@ -7,7 +7,7 @@ import { fullStore } from './data/albums';
 
 // Components
 import Hero from './general_ui/hero';
-import AlbumCarousel from './carousels/album_carousel';
+import AlbumGrid from './grids/album_grid';
 import CarouselLoader from './carousels/carousel_loader';
 
 
@@ -49,7 +49,7 @@ class AlbumList extends React.Component {
           subtitle={""}
         />
 
-        {loaded ? <AlbumCarousel
+        {loaded ? <AlbumGrid
           key={"New-Releases"}
           identifier={"New-Releases"}
           carouselTitle={"New Releases"}
