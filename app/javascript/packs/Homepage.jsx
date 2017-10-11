@@ -5,7 +5,10 @@ import PropTypes from 'prop-types'
 // Mocked data
 import { newReleases,
          featuredReleases,
-         acclaimedReleases } from './data/albums';
+         acclaimedReleases,
+         becausePF,
+         becauseElvis,
+         becauseBeatles } from './data/albums';
 
 // Components
 import Hero from './general_ui/hero';
@@ -22,7 +25,10 @@ class HomePage extends React.Component {
       loaded: false,
       newReleases: [],
       featuredReleases: [],
-      acclaimedReleases: []
+      acclaimedReleases: [],
+      becausePF: [],
+      becauseElvis: [],
+      becauseBeatles: []
     }
   }
 
@@ -31,9 +37,12 @@ class HomePage extends React.Component {
     setTimeout(() => {
       this.setState({
         loaded: true,
-        newReleases: newReleases,
-        featuredReleases: featuredReleases,
-        acclaimedReleases: acclaimedReleases
+        newReleases: newReleases(),
+        featuredReleases: featuredReleases(),
+        acclaimedReleases: acclaimedReleases(),
+        becausePF: becausePF(),
+        becauseElvis: becauseElvis(),
+        becauseBeatles: becauseBeatles()
       })
     }, 300);
   }
@@ -79,21 +88,21 @@ class HomePage extends React.Component {
           key={"Pink-Floyd"}
           identifier={"Pink-Floyd"}
           carouselTitle={"Because you purchased Pink Floyd"}
-          albums={this.state.newReleases}
+          albums={this.state.becausePF}
         />
 
         <AlbumCarousel
           key={"Elvis"}
           identifier={"Elvis"}
           carouselTitle={"Because you purchased Elvis"}
-          albums={this.state.featuredReleases}
+          albums={this.state.becauseElvis}
         />
 
         <AlbumCarousel
           key={"the-Beatles"}
           identifier={"the-Beatles"}
           carouselTitle={"Because you purchased the Beatles"}
-          albums={this.state.acclaimedReleases}
+          albums={this.state.becauseBeatles}
         />
 
       </div>

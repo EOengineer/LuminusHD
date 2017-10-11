@@ -34,7 +34,6 @@ class AlbumGrid extends React.Component {
     this.$el       = $(this.el);
     let albumCount = this.props.albums.length
     let columns    = 4
-    console.log("settings", responsiveGridSettings(this.props.albums.length))
 
     if (this.$el[0] && !this.$el.hasClass('slick-initalized')) {
       let elementId = this.$el[0].id

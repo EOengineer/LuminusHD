@@ -26,7 +26,7 @@ class AlbumList extends React.Component {
 
 
   componentDidMount() {
-    let albums = fullStore
+    let albums = fullStore()
     // check cache or hit api with this.props.endpoint
     setTimeout(() => {
       this.setState({
