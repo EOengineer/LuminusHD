@@ -138,7 +138,8 @@ all_albums.each do |album_obj|
   puts "artist #{artist.id} #{artist.name}"
   puts "genre #{genre.id} #{genre.title}"
 
-  album        = Album.new({title: album_obj[:title], description: "Placeholder Description for #{album_obj[:title]}"})
+  # Init, associate, and save
+  album        = Album.new({title: album_obj[:title], description: "Placeholder Description for #{album_obj[:title]}", image_url: album_obj[:image_url]})
   album.artist = artist
   album.label  = label
   album.save!
@@ -150,7 +151,7 @@ all_albums.each do |album_obj|
 
   if album.tracks.empty?
     [*1..12].each do |index|
-      album.tracks.create({title: "Track title #{index}"})
+      album.tracks.create({title: "Track title #{index}", description: "Placeholder description for Track #{index}"})
     end
   end
 

@@ -11,6 +11,7 @@ class Album < ApplicationRecord
 
   validates :title,
             :description,
+            :image_url,
             :artist_id,
             :label_id, presence: true
 

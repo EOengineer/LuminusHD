@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170912025417) do
   create_table "albums", force: :cascade do |t|
     t.string "title", null: false
     t.string "subtitle"
+    t.string "image_url", null: false
     t.text "description", null: false
     t.text "subdescription"
     t.datetime "release_date"
