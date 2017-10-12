@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import axios from 'axios';
+
 // Mocked data
 import { newReleases,
          featuredReleases,
@@ -22,7 +24,7 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loaded: false,
+      loading: true,
       newReleases: [],
       featuredReleases: [],
       acclaimedReleases: [],
@@ -34,21 +36,23 @@ class HomePage extends React.Component {
 
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        loaded: true,
-        newReleases: newReleases(),
-        featuredReleases: featuredReleases(),
-        acclaimedReleases: acclaimedReleases(),
-        becausePF: becausePF(),
-        becauseElvis: becauseElvis(),
-        becauseBeatles: becauseBeatles()
+
+    axios.get('/home/carousels')
+      .then((response) =>{
+        this.setState({
+          loading: false,
+          newReleases: response.data.newReleases,
+          featuredReleases: response.data.featuredReleases,
+          acclaimedReleases: response.data.acclaimedReleases,
+          becausePF: response.data.because_1,
+          becauseElvis: response.data.because_2,
+          becauseBeatles: response.data.because_3
+        })
       })
-    }, 300);
   }
 
   render() {
-
+    console.log("rendering", this.state)
     let loaded = this.state.loaded
 
     return (
@@ -60,7 +64,7 @@ class HomePage extends React.Component {
           subtitle={"The standard in High Res Audio"}
         />
 
-        {loaded ? <AlbumCarousel
+        {!this.state.loading ? <AlbumCarousel
           key={"New-Releases"}
           identifier={"New-Releases"}
           carouselTitle={"New Releases"}
@@ -68,7 +72,7 @@ class HomePage extends React.Component {
         /> : <CarouselLoader />}
 
 
-        {loaded ? <AlbumCarousel
+        {!this.state.loading ? <AlbumCarousel
           key={"Featured-Releases"}
           identifier={"Featured-Releases"}
           carouselTitle={"Featured Albums"}
@@ -76,7 +80,7 @@ class HomePage extends React.Component {
         /> : <CarouselLoader />}
 
 
-        {loaded ? <AlbumCarousel
+        {!this.state.loading ? <AlbumCarousel
           key={"Critically-Acclaimed"}
           identifier={"Critically-Acclaimed"}
           carouselTitle={"Critically Acclaimed"}

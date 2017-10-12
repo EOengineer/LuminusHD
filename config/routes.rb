@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get '/home', to: "home#index", as: "homepage"
+  get '/home/carousels', to: "home#carousels", as: "homepage_carousels"
 
   namespace :admin do
     resources :albums
