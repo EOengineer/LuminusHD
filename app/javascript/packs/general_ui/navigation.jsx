@@ -37,13 +37,13 @@ class Navigation extends React.Component {
                 Albums
               </Link>
               <div className="navbar-dropdown is-boxed">
-                <Link to="/albums/new-releases" className="navbar-item ">
+                <Link to="/new-releases" className="navbar-item ">
                   New Releases
                 </Link>
-                <Link to="/albums/featured-releases" className="navbar-item ">
+                <Link to="/featured-releases" className="navbar-item ">
                   Featured Releases
                 </Link>
-                <Link to="/albums/critically-acclaimed" className="navbar-item ">
+                <Link to="/acclaimed-releases" className="navbar-item ">
                   Critically Acclaimed
                 </Link>
                 <a className="navbar-item " href="http://bulma.io/documentation/layout/container/">

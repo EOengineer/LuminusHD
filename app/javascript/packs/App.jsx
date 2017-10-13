@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         <Route
-          exact path="/albums/new-releases"
+          exact path="/new-releases"
           render={(props) => (
           <AlbumList
             endpoint="new-releases"
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         )} />
 
         <Route
-          exact path="/albums/featured-releases"
+          exact path="/featured-releases"
           render={(props) => (
           <AlbumList
             endpoint="featured-releases"
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         )} />
 
         <Route
-          exact path="/albums/critically-acclaimed"
+          exact path="/acclaimed-releases"
           render={(props) => (
           <AlbumList
             endpoint="critically-acclaimed"
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imageUrl="https://static.pexels.com/photos/320335/pexels-photo-320335.jpeg" />
         )} />
 
-        <Route path="/album/:id" component={Album} />
+        <Route path="/albums/:id" component={Album} />
 
       </div>
     </Router>,

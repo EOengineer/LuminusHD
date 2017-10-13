@@ -12,7 +12,7 @@ class CarouselAlbum extends React.Component {
   render() {
 
     let albumId     = this.props.album.id
-    let relativeUrl = `/album/${albumId}`
+    let relativeUrl = `/albums/${albumId}`
 
     return (
       <Link to={relativeUrl}>

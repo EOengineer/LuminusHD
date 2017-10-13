@@ -24,6 +24,11 @@ class AlbumList extends React.Component {
     }
   }
 
+  search = (e) => {
+    console.log(e.target.value)
+    console.log("we searching")
+  }
+
 
   componentDidMount() {
     let albums = fullStore()
@@ -48,6 +53,22 @@ class AlbumList extends React.Component {
           imageUrl={this.props.imageUrl}
           subtitle={""}
         />
+
+        {loaded &&
+          <section className="section">
+            <div style={{maxWidth: "400px", marginLeft: "auto", marginRight: "auto"}} className="field has-addons">
+
+              <div className="control">
+                <input onChange={this.search} className="input" type="text" placeholder="search" name="q"></input>
+              </div>
+              <div className="control">
+                <a className="button is-info">
+                  Search
+                </a>
+              </div>
+            </div>
+          </section>
+        }
 
         {loaded ? <AlbumGrid
           key={"New-Releases"}
