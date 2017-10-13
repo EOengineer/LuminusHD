@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import axios from 'axios';
+
 // Mocked data
 import { fullStore } from './data/albums';
 import { sliderImages } from './data/images';
@@ -25,7 +27,7 @@ class Album extends React.Component {
 
   getAlbum = () => {
     let currentAlbumId = Number.parseInt(this.props.match.params.id)
-    let currentAlbum   = fullStore.filter((item) => {
+    let currentAlbum   = fullStore().filter((item) => {
       return item.id === currentAlbumId
     })
 
@@ -43,7 +45,16 @@ class Album extends React.Component {
 
 
   componentDidMount() {
-    this.getAlbum()
+    //this.getAlbum()
+    const albumId = this.props.match.params.id
+    axios.get(`/albums/${albumId}`)
+    .then((response) => {
+      console.log("album get", response)
+      this.setState({
+        album: response.data,
+        albumArt: sliderImages
+      })
+    })
   }
 
   render() {
@@ -70,16 +81,12 @@ class Album extends React.Component {
 
                   <div className="column">
                     <h1 className="title is-size-5">{album.title}
-                      <span className="is-size-6"> | {album.artist}
+                      <span className="is-size-6"> | {album.artist.name}
                         <span className="is-size-6"> | 1980</span>
                       </span>
                     </h1>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well!</p>
-                    <br/>
-                    <p> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
-                    <br />
-                    <p>Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
+                    <div dangerouslySetInnerHTML={{__html: album.description}} />
 
                   </div>
 
@@ -117,7 +124,7 @@ class Album extends React.Component {
           {this.state.selectedTab === "music" &&
           <div className="container restrict has-text-centered">
             <h1 className="title is-4">View the available tracks and formats for this album.</h1>
-            {this.state.albumTracks.length > 0 ? <TrackTable tracks={this.state.albumTracks} /> : <div>loading</div>}
+            {this.state.album.tracks.length > 0 ? <TrackTable tracks={this.state.album.tracks} /> : <div>loading</div>}
           </div>
           }
 

@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get '/home', to: "home#index", as: "homepage"
   get '/home/carousels', to: "home#carousels", as: "homepage_carousels"
 
+
+  # albums
+  get '/albums/:id', to: "albums#show", as: "album"
+
   namespace :admin do
     resources :albums
   end

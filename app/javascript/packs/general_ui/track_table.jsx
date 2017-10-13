@@ -6,17 +6,20 @@ class TrackTable extends React.Component {
 
 
   getTracks() {
-    return this.props.tracks.map((track) => {
+    return this.props.tracks.map((track, i) => {
       return(
         <tr key={track.id} >
-          <th>{track.id}</th>
+          <th>{i}</th>
           <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">{track.title}</a></td>
-          <td>{track.length}</td>
+          <td>{track.time}</td>
           <td>
-          {track.id % 2 == 0 &&
+
+          {track.single &&
             <span className="icon has-text-success">
               <i className="fa fa-check-square"></i>
-            </span>}
+            </span>
+          }
+
           </td>
           <td>
             <a className="button is-primary is-outlined">AIFF</a>

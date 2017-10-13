@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 20170912025417) do
 
   create_table "tracks", force: :cascade do |t|
     t.string "title", null: false
+    t.string "time", null: false
+    t.boolean "single", default: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
