@@ -37,7 +37,7 @@ class HomePage extends React.Component {
 
   componentDidMount() {
 
-    axios.get('/home/carousels')
+    axios.get('/v1/home/carousels')
       .then((response) =>{
         this.setState({
           loading: false,
@@ -52,7 +52,6 @@ class HomePage extends React.Component {
   }
 
   render() {
-    console.log("rendering", this.state)
     let loaded = this.state.loaded
 
     return (

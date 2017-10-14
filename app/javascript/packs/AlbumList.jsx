@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import axios from 'axios'
+
 // Mocked data
 import { fullStore } from './data/albums';
 
@@ -18,27 +20,45 @@ class AlbumList extends React.Component {
     super(props)
     this.state = {
       loaded: false,
-      newReleases: [],
-      featuredReleases: [],
-      acclaimedReleases: []
+      albums: []
     }
+    this.search = this.search.bind(this)
   }
 
-  search = (e) => {
-    console.log(e.target.value)
-    console.log("we searching")
+  search(e) {
+    //console.log("e", e)
+    let endpoint = this.props.endpoint
+    let searchTerm = e.target.value
+
+    if (searchTerm.length > 2) {
+      axios.get(`/v1/${endpoint}?q=${searchTerm}`)
+      .then((response) => {
+        this.setState({
+          albums: response.data
+        })
+      })
+    }
   }
 
 
   componentDidMount() {
-    let albums = fullStore()
-    // check cache or hit api with this.props.endpoint
-    setTimeout(() => {
-      this.setState({
-        loaded: true,
-        albums: albums,
+    console.log("mount", this.state.albums)
+    let endpoint = this.props.endpoint
+    axios.get(`/v1/${endpoint}`)
+      .then((response) => {
+        this.setState({
+          loaded: true,
+          albums: response.data
+        })
       })
-    }, 300);
+  }
+
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("album list updated", this.state.albums)
+    // this.setState({
+    //   albums
+    // })
   }
 
   render() {
@@ -49,12 +69,10 @@ class AlbumList extends React.Component {
 
         <Hero
           mainTitle={this.props.title}
-          enhancedTitle={""}
           imageUrl={this.props.imageUrl}
-          subtitle={""}
         />
 
-        {loaded &&
+
           <section className="section">
             <div style={{maxWidth: "400px", marginLeft: "auto", marginRight: "auto"}} className="field has-addons">
 
@@ -68,14 +86,12 @@ class AlbumList extends React.Component {
               </div>
             </div>
           </section>
-        }
 
-        {loaded ? <AlbumGrid
-          key={"New-Releases"}
+        <AlbumGrid
           identifier={"New-Releases"}
           carouselTitle={"New Releases"}
           albums={this.state.albums}
-        /> : <CarouselLoader />}
+        />
 
       </div>
     )

@@ -25,19 +25,43 @@ class AlbumGrid extends React.Component {
 
   listAlbums = () => {
     return this.props.albums.map((album, i) => {
-      return <CarouselAlbum key={i + Math.random()} album={album} />
+      return <CarouselAlbum key={i} album={album} />
     })
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   this.$el       = $(this.el);
+  //   console.log("element", this.$el.length)
 
-  initializeSlider() {
+  //   if (this.$el.length > 0) {
+  //     this.$el.slick('unslick')
+
+  //     console.log("ummm recieve", responsiveGridSettings(nextProps.albums.length))
+  //     this.$el.slick({
+  //       adaptiveWidth: false,
+  //       focusOnSelect: false,
+  //       variableWidth: false,
+  //       accessibility: false,
+  //       rows: 1,
+  //       //slidesPerRow: 5,
+  //       slidesToShow: nextProps.albums.length,
+  //       responsive: responsiveGridSettings(nextProps.albums.length)
+  //     });
+  //   }
+
+  // }
+
+  initializeSlider = (refresh=false) => {
     this.$el       = $(this.el);
     let albumCount = this.props.albums.length
-    let columns    = 4
+    let columns    = 5
 
-    if (this.$el[0] && !this.$el.hasClass('slick-initalized')) {
+    if (this.$el[0]) {
+      console.log(this.$el)
+      //this.$el.slick('unslick')
+
       let elementId = this.$el[0].id
-
+      //console.log("ummm", responsiveGridSettings(albumCount))
       this.$el.slick({
         adaptiveWidth: false,
         focusOnSelect: false,
@@ -52,11 +76,15 @@ class AlbumGrid extends React.Component {
   }
 
   componentDidMount() {
-    this.initializeSlider()
+    console.log("album grid mounting", this.props)
+    //this.initializeSlider()
   }
 
   componentDidUpdate(prevProps, prevState) {
-    this.initializeSlider()
+    // this.$el       = $(this.el);
+    // console.log(this.$el)
+    console.log("album grid updating", this.props)
+    //this.initializeSlider()
   }
 
 
@@ -67,18 +95,18 @@ class AlbumGrid extends React.Component {
     let loaded        = this.props.albums.length > 0
 
     return (
-      <div key={carouselKey} className="carousel container">
-          {loaded &&
+      <div className="carousel container">
+
             <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
-          }
 
 
 
-          {loaded &&
+
+
             <div id={carouselKey} ref={el => this.el = el} className="js-slider">
               {this.listAlbums()}
             </div>
-          }
+
 
 
       </div>

@@ -65,7 +65,7 @@ class AlbumCarousel extends React.Component {
     let loaded        = this.props.albums.length > 0
 
     return (
-      <div key={carouselKey} className="carousel container">
+      <div className="carousel container">
           {loaded &&
             <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
           }
