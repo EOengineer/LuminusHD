@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
           exact path="/acclaimed-releases"
           render={(props) => (
           <AlbumList
-            endpoint="critically-acclaimed"
+            endpoint="acclaimed-releases"
             title="Critically Acclaimed"
             imageUrl="https://static.pexels.com/photos/320335/pexels-photo-320335.jpeg" />
         )} />

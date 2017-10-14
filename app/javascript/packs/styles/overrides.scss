@@ -38,11 +38,15 @@
   }
 }
 
+.grid {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-
-// flexbox overrides for slick- carousel
-// * {
-//   min-height: 0;
-//   min-width: 0;
-// }
-
+.grid-cell {
+  flex: 1;
+  flex-grow: 1;
+  width: 13em;
+}

@@ -13,10 +13,11 @@ class CarouselAlbum extends React.Component {
 
     let albumId     = this.props.album.id
     let relativeUrl = `/albums/${albumId}`
+    let flexClass   = this.props.flex ? " grid-cell" : "" ;
 
     return (
       <Link to={relativeUrl}>
-        <div className="carousel-item carousel-album option">
+        <div className={"carousel-item carousel-album option" + flexClass} >
 
             <div className="image is-square">
               <img src={this.props.album.image_url}></img>

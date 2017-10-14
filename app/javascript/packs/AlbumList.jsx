@@ -89,7 +89,7 @@ class AlbumList extends React.Component {
 
         <AlbumGrid
           identifier={"New-Releases"}
-          carouselTitle={"New Releases"}
+          carouselTitle={this.props.title}
           albums={this.state.albums}
         />
 
