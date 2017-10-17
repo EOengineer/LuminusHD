@@ -28,11 +28,53 @@
   outline: none;
 }
 
+.restrict-width {
+  max-width: 400px;
+}
 
+.restrict-height {
+  @media only screen and (min-width: 769px) {
+    max-height: 600px;
+  }
+}
 
-// flexbox overrides for slick- carousel
-// * {
-//   min-height: 0;
-//   min-width: 0;
-// }
+.grid {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.grid-cell {
+  flex: 0;
+
+  @media only screen and (min-width: 200px) and (max-width: 500px) {
+    width: 24em;
+  }
+
+  @media only screen and (min-width: 501px) and (max-width: 768px) {
+    width: 20em;
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 835px) {
+    width: 16em;
+  }
+
+  @media only screen and (min-width: 836px) and (max-width: 1008px) {
+    width: 16em;
+  }
+
+  @media only screen and (min-width: 1009px) and (max-width: 1200px) {
+    width: 18em;
+  }
+
+  @media only screen and (min-width: 1201px) and (max-width: 1392px) {
+    width: 16em;
+  }
+
+  @media only screen and (min-width: 1393px) and (max-width: 3000px) {
+    //good
+    width: 14.5em;
+  }
+}
 

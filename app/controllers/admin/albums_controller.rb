@@ -37,7 +37,7 @@ class Admin::AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:title, :subtitle, :description, :subdescription, :release_date, :artist_id, :label_id, :available, track_ids: [])
+    params.require(:album).permit(:title, :subtitle, :image_url, :description, :subdescription, :release_date, :artist_id, :label_id, :available, track_ids: [])
   end
 
 end

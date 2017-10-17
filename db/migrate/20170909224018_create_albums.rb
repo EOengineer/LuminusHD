@@ -3,6 +3,7 @@ class CreateAlbums < ActiveRecord::Migration[5.1]
     create_table :albums do |t|
       t.string :title, null: false
       t.string :subtitle
+      t.string :image_url, null: false
       t.text :description, null: false
       t.text :subdescription
       t.datetime :release_date

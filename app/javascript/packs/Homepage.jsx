@@ -2,10 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import axios from 'axios';
+
 // Mocked data
 import { newReleases,
          featuredReleases,
-         acclaimedReleases } from './data/albums';
+         acclaimedReleases,
+         becausePF,
+         becauseElvis,
+         becauseBeatles } from './data/albums';
 
 // Components
 import Hero from './general_ui/hero';
@@ -19,27 +24,34 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loaded: false,
+      loading: true,
       newReleases: [],
       featuredReleases: [],
-      acclaimedReleases: []
+      acclaimedReleases: [],
+      becausePF: [],
+      becauseElvis: [],
+      becauseBeatles: []
     }
   }
 
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        loaded: true,
-        newReleases: newReleases,
-        featuredReleases: featuredReleases,
-        acclaimedReleases: acclaimedReleases
+
+    axios.get('/v1/home/carousels')
+      .then((response) =>{
+        this.setState({
+          loading: false,
+          newReleases: response.data.newReleases,
+          featuredReleases: response.data.featuredReleases,
+          acclaimedReleases: response.data.acclaimedReleases,
+          becausePF: response.data.because_1,
+          becauseElvis: response.data.because_2,
+          becauseBeatles: response.data.because_3
+        })
       })
-    }, 300);
   }
 
   render() {
-
     let loaded = this.state.loaded
 
     return (
@@ -47,10 +59,11 @@ class HomePage extends React.Component {
         <Hero
           mainTitle={"Luminus"}
           enhancedTitle={"HD"}
+          imageUrl={"https://static.pexels.com/photos/164828/pexels-photo-164828.jpeg"}
           subtitle={"The standard in High Res Audio"}
         />
 
-        {loaded ? <AlbumCarousel
+        {!this.state.loading ? <AlbumCarousel
           key={"New-Releases"}
           identifier={"New-Releases"}
           carouselTitle={"New Releases"}
@@ -58,7 +71,7 @@ class HomePage extends React.Component {
         /> : <CarouselLoader />}
 
 
-        {loaded ? <AlbumCarousel
+        {!this.state.loading ? <AlbumCarousel
           key={"Featured-Releases"}
           identifier={"Featured-Releases"}
           carouselTitle={"Featured Albums"}
@@ -66,7 +79,7 @@ class HomePage extends React.Component {
         /> : <CarouselLoader />}
 
 
-        {loaded ? <AlbumCarousel
+        {!this.state.loading ? <AlbumCarousel
           key={"Critically-Acclaimed"}
           identifier={"Critically-Acclaimed"}
           carouselTitle={"Critically Acclaimed"}
@@ -78,21 +91,21 @@ class HomePage extends React.Component {
           key={"Pink-Floyd"}
           identifier={"Pink-Floyd"}
           carouselTitle={"Because you purchased Pink Floyd"}
-          albums={this.state.newReleases}
+          albums={this.state.becausePF}
         />
 
         <AlbumCarousel
           key={"Elvis"}
           identifier={"Elvis"}
           carouselTitle={"Because you purchased Elvis"}
-          albums={this.state.featuredReleases}
+          albums={this.state.becauseElvis}
         />
 
         <AlbumCarousel
           key={"the-Beatles"}
           identifier={"the-Beatles"}
           carouselTitle={"Because you purchased the Beatles"}
-          albums={this.state.acclaimedReleases}
+          albums={this.state.becauseBeatles}
         />
 
       </div>

@@ -2,13 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import axios from 'axios';
+
 // Mocked data
 import { fullStore } from './data/albums';
 import { sliderImages } from './data/images';
+import { albumTracks } from './data/tracks';
 
 import CarouselLoader from './carousels/carousel_loader';
 import ImageCarousel from './carousels/image_carousel';
-
+import TrackTable from './general_ui/track_table';
 
 class Album extends React.Component {
 
@@ -17,13 +20,14 @@ class Album extends React.Component {
     this.state = {
       album: null,
       albumArt: [],
+      albumTracks: albumTracks(),
       selectedTab: "art"
     }
   }
 
   getAlbum = () => {
     let currentAlbumId = Number.parseInt(this.props.match.params.id)
-    let currentAlbum   = fullStore.filter((item) => {
+    let currentAlbum   = fullStore().filter((item) => {
       return item.id === currentAlbumId
     })
 
@@ -41,7 +45,14 @@ class Album extends React.Component {
 
 
   componentDidMount() {
-    this.getAlbum()
+    const albumId = this.props.match.params.id
+    axios.get(`/v1/albums/${albumId}`)
+    .then((response) => {
+      this.setState({
+        album: response.data,
+        albumArt: sliderImages
+      })
+    })
   }
 
   render() {
@@ -54,30 +65,26 @@ class Album extends React.Component {
 
     return (
       <div>
-        <section className="section">
+        <section className="section restrict-height is-clearfix">
           {album &&
             <div className="content">
               <div className="container">
-                <div className="columns">
+                <div className="columns restrict-height">
 
                   <div className="column">
-                    <div style={albumImageStyle} className="image is-square">
-                      <img style={{marginLeft: 'auto', marginRight: 'auto'}} src={album.image_url}></img>
+                    <div style={albumImageStyle} className="image restrict-height">
+                      <img className="restrict-width" style={{marginLeft: 'auto', marginRight: 'auto'}} src={album.image_url}></img>
                     </div>
                   </div>
 
                   <div className="column">
                     <h1 className="title is-size-5">{album.title}
-                      <span className="is-size-6"> | {album.artist}
+                      <span className="is-size-6"> | {album.artist.name}
                         <span className="is-size-6"> | 1980</span>
                       </span>
                     </h1>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well!</p>
-                    <br/>
-                    <p> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
-                    <br />
-                    <p>Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
+                    <div dangerouslySetInnerHTML={{__html: album.description}} />
 
                   </div>
 
@@ -87,7 +94,7 @@ class Album extends React.Component {
           }
         </section>
 
-        <section>
+        <section className="section">
           <div className="tabs is-centered is-boxed">
             <ul>
             <li className={this.state.selectedTab === "art" ? "is-active" : ""} onClick={this.updateSelectedTab.bind(this, "art")}>
@@ -106,15 +113,16 @@ class Album extends React.Component {
           </div>
 
           {this.state.selectedTab === "art" &&
-          <div className="container" id="art-content">
-            <h1 className="title is-1">Here will be the contents of the "Album Art" tab</h1>
+          <div className="container restrict has-text-centered" id="art-content">
+            <h1 className="title is-4">View the high quality album art included with your purchase.</h1>
             {this.state.albumArt.length > 0 ? <ImageCarousel identifier="art" carouselTitle="Album Artwork" images={this.state.albumArt} /> : <CarouselLoader />}
           </div>
           }
 
           {this.state.selectedTab === "music" &&
-          <div className="container">
-            <h1 className="title is-1">Here will be the contents of the "Music" tab</h1>
+          <div className="container restrict has-text-centered">
+            <h1 className="title is-4">View the available tracks and formats for this album.</h1>
+            {this.state.album.tracks.length > 0 ? <TrackTable tracks={this.state.album.tracks} /> : <div>loading</div>}
           </div>
           }
 

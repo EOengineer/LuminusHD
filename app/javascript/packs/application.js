@@ -11,6 +11,7 @@
 // global styles
 import "bulma/bulma.sass";
 import 'font-awesome/scss/font-awesome.scss';
+import './styles/overrides';
 
 
 
