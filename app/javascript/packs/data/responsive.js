@@ -68,6 +68,7 @@ export let responsiveSettings = [
       ]
 
 export let responsiveGridSettings = function(count) {
+  console.log("settings count", count)
     let settings = [
         {
           // fullhd
@@ -75,7 +76,7 @@ export let responsiveGridSettings = function(count) {
           settings: {
             infinite: false,
             arrows: false,
-            rows: Math.trunc(count / 5),
+            rows: count < 5 ? 1 : Math.trunc(count / 5),
             slidesPerRow: 5
           }
         },
@@ -85,7 +86,7 @@ export let responsiveGridSettings = function(count) {
           settings: {
             infinite: false,
             arrows: false,
-            rows: Math.trunc(count / 4),
+            rows: count < 4 ? 1 : Math.trunc(count / 4),
             slidesPerRow: 4
           }
         },
@@ -95,7 +96,7 @@ export let responsiveGridSettings = function(count) {
           settings: {
             infinite: false,
             arrows: false,
-            rows: Math.trunc(count / 3),
+            rows: count < 3 ? 1 : Math.trunc(count / 3),
             slidesPerRow: 3
           }
         },
@@ -105,7 +106,7 @@ export let responsiveGridSettings = function(count) {
           settings: {
             infinite: false,
             arrows: false,
-            rows: Math.trunc(count / 3),
+            rows: count < 3 ? 1 : Math.trunc(count / 3),
             slidesPerRow: 3
           }
         },
@@ -115,7 +116,7 @@ export let responsiveGridSettings = function(count) {
           settings: {
             infinite: false,
             arrows: false,
-            rows: Math.trunc(count / 2),
+            rows: count < 2 ? 1 : Math.trunc(count / 2),
             slidesPerRow: 2
           }
         },
@@ -125,7 +126,7 @@ export let responsiveGridSettings = function(count) {
           settings: {
             infinite: false,
             arrows: false,
-            rows: Math.trunc(count / 1),
+            rows: count,
             slidesPerRow: 1
           }
         },

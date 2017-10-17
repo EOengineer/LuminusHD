@@ -25,38 +25,8 @@ class AlbumGrid extends React.Component {
 
   listAlbums = () => {
     return this.props.albums.map((album, i) => {
-      return <CarouselAlbum key={i + Math.random()} album={album} />
+      return <CarouselAlbum key={i} album={album} flex={true} />
     })
-  }
-
-
-  initializeSlider() {
-    this.$el       = $(this.el);
-    let albumCount = this.props.albums.length
-    let columns    = 4
-
-    if (this.$el[0] && !this.$el.hasClass('slick-initalized')) {
-      let elementId = this.$el[0].id
-
-      this.$el.slick({
-        adaptiveWidth: false,
-        focusOnSelect: false,
-        variableWidth: false,
-        accessibility: false,
-        rows: Math.trunc(albumCount / columns),
-        slidesPerRow: columns,
-        responsive: responsiveGridSettings(albumCount)
-      });
-
-    }
-  }
-
-  componentDidMount() {
-    this.initializeSlider()
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    this.initializeSlider()
   }
 
 
@@ -67,19 +37,13 @@ class AlbumGrid extends React.Component {
     let loaded        = this.props.albums.length > 0
 
     return (
-      <div key={carouselKey} className="carousel container">
-          {loaded &&
-            <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
-          }
+      <div className="carousel container">
 
+        <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
 
-
-          {loaded &&
-            <div id={carouselKey} ref={el => this.el = el} className="js-slider">
-              {this.listAlbums()}
-            </div>
-          }
-
+        <div className="grid">
+          {this.listAlbums()}
+        </div>
 
       </div>
     )

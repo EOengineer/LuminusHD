@@ -34,7 +34,7 @@ class Album extends React.Component {
     if (!currentAlbum) {
       // call api here if store doesnt have album for some reason
     }
-    console.log("current album", currentAlbum)
+
     this.setState({album: currentAlbum[0], albumArt: sliderImages });
   }
 
@@ -45,11 +45,9 @@ class Album extends React.Component {
 
 
   componentDidMount() {
-    //this.getAlbum()
     const albumId = this.props.match.params.id
-    axios.get(`/albums/${albumId}`)
+    axios.get(`/v1/albums/${albumId}`)
     .then((response) => {
-      console.log("album get", response)
       this.setState({
         album: response.data,
         albumArt: sliderImages
