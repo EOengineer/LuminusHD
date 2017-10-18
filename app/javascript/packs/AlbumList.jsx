@@ -19,51 +19,48 @@ class AlbumList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loaded: false,
       albums: []
     }
-    this.search = this.search.bind(this)
   }
 
-  search(e) {
-    //console.log("e", e)
-    let endpoint = this.props.endpoint
-    let searchTerm = e.target.value
-
-    if (searchTerm.length > 2) {
-      axios.get(`/v1/${endpoint}?q=${searchTerm}`)
-      .then((response) => {
-        this.setState({
-          albums: response.data
-        })
-      })
+  combineTextEntries(ctrl, fnc, args){
+    if (ctrl.updateDelayTimeout ){
+        window.clearTimeout(ctrl.updateDelayTimeout );
     }
+    ctrl.updateDelayTimeout = setTimeout( function(){fnc.apply(this, args);}, 500);
+  }
+
+
+  sendSearch = (term) => {
+    let endpoint = this.props.endpoint
+    return axios.get(`/v1/${endpoint}?q=${term}`)
+    .then((response) => {
+      this.setState({
+        albums: response.data
+      })
+    })
+  }
+
+  search = (e) => {
+    let searchTerm = e.target.value
+    this.combineTextEntries(this, this.sendSearch, [searchTerm])
   }
 
 
   componentDidMount() {
-    console.log("mount", this.state.albums)
     let endpoint = this.props.endpoint
     axios.get(`/v1/${endpoint}`)
-      .then((response) => {
-        this.setState({
-          loaded: true,
-          albums: response.data
-        })
+    .then((response) => {
+      this.setState({
+        albums: response.data
       })
+    })
   }
 
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log("album list updated", this.state.albums)
-    // this.setState({
-    //   albums
-    // })
-  }
+
 
   render() {
-    let loaded = this.state.loaded
-
     return (
       <div>
 
