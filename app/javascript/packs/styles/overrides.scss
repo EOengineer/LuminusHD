@@ -38,11 +38,19 @@
   }
 }
 
+// 769 864
+
 .grid {
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+
+  @media only screen and (min-width: 200px) and (max-width: 864px) {
+    justify-content: center;
+  }
+
+  align-content: center;
 }
 
 .grid-cell {
@@ -56,11 +64,11 @@
     width: 20em;
   }
 
-  @media only screen and (min-width: 769px) and (max-width: 835px) {
-    width: 16em;
+  @media only screen and (min-width: 769px) and (max-width: 864px) {
+    width: 14em;
   }
 
-  @media only screen and (min-width: 836px) and (max-width: 1008px) {
+  @media only screen and (min-width: 865px) and (max-width: 1008px) {
     width: 16em;
   }
 
