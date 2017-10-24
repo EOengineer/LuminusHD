@@ -44,7 +44,7 @@
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   @media only screen and (min-width: 200px) and (max-width: 864px) {
     justify-content: center;
