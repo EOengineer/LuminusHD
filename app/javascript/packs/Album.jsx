@@ -68,7 +68,7 @@ class Album extends React.Component {
         <section className="section restrict-height is-clearfix">
           {album &&
             <div className="content">
-              <div className="container">
+              <div className="container has-text-white">
                 <div className="columns restrict-height">
 
                   <div className="column">
@@ -78,9 +78,9 @@ class Album extends React.Component {
                   </div>
 
                   <div className="column">
-                    <h1 className="title is-size-5">{album.title}
-                      <span className="is-size-6"> | {album.artist.name}
-                        <span className="is-size-6"> | 1980</span>
+                    <h1 className="title has-text-white is-size-5">{album.title}
+                      <span className="has-text-white is-size-6"> | {album.artist.name}
+                        <span className="has-text-white is-size-6"> | 1980</span>
                       </span>
                     </h1>
 
@@ -113,15 +113,15 @@ class Album extends React.Component {
           </div>
 
           {this.state.selectedTab === "art" &&
-          <div className="container restrict has-text-centered" id="art-content">
-            <h1 className="title is-4">View the high quality album art included with your purchase.</h1>
+          <div className="container restrict has-text-white has-text-centered" id="art-content">
+            <h1 className="title has-text-white is-4">View the high quality album art included with your purchase.</h1>
             {this.state.albumArt.length > 0 ? <ImageCarousel identifier="art" carouselTitle="Album Artwork" images={this.state.albumArt} /> : <CarouselLoader />}
           </div>
           }
 
           {this.state.selectedTab === "music" &&
           <div className="container restrict has-text-centered">
-            <h1 className="title is-4">View the available tracks and formats for this album.</h1>
+            <h1 className="title has-text-white is-4">View the available tracks and formats for this album.</h1>
             {this.state.album.tracks.length > 0 ? <TrackTable tracks={this.state.album.tracks} /> : <div>loading</div>}
           </div>
           }

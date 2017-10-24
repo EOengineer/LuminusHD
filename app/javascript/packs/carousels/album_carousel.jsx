@@ -65,9 +65,9 @@ class AlbumCarousel extends React.Component {
     let loaded        = this.props.albums.length > 0
 
     return (
-      <div className="carousel container">
+      <div className={this.props.needsHeadroom ? "carousel container carousel-headroom" : "carousel container"} >
           {loaded &&
-            <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
+            <h1 className="title has-text-white is-size-4 carousel-title">{carouselTitle}</h1>
           }
 
 

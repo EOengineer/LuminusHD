@@ -13,11 +13,12 @@ import HomePage from './Homepage';
 import AlbumList from './AlbumList';
 import Album from './Album';
 
+
 document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(
     <Router>
-      <div>
+      <div style={{backgroundColor: '#0a0a0a'}} >
         <Navigation />
 
         <Route

@@ -70,16 +70,18 @@ class AlbumList extends React.Component {
         />
 
 
-          <section className="section">
-            <div style={{maxWidth: "400px", marginLeft: "auto", marginRight: "auto"}} className="field has-addons">
+          <section className="section no-padding">
+            <div className="container">
+              <div style={{marginRight: "2.5em"}} className="field is-pulled-right has-addons">
 
-              <div className="control">
-                <input onChange={this.search} className="input" type="text" placeholder="search" name="q"></input>
-              </div>
-              <div className="control">
-                <a className="button is-info">
-                  Search
-                </a>
+                <div className="control">
+                  <input onChange={this.search} className="input is-pulled-right" type="text" placeholder="search" name="q"></input>
+                </div>
+                <div className="control">
+                  <a className="button is-info">
+                    Search
+                  </a>
+                </div>
               </div>
             </div>
           </section>

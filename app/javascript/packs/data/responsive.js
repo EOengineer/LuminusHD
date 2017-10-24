@@ -7,7 +7,7 @@ export let responsiveSettings = [
             arrows: true,
             slidesToShow: 5,
             slidesToScroll: 1,
-            dots: true
+            dots: false
           }
         },
         {
@@ -18,7 +18,7 @@ export let responsiveSettings = [
             arrows: true,
             slidesToShow: 4,
             slidesToScroll: 1,
-            dots: true
+            dots: false
           }
         },
         {
@@ -29,7 +29,7 @@ export let responsiveSettings = [
             arrows: true,
             slidesToShow: 3,
             slidesToScroll: 1,
-            dots: true
+            dots: false
           }
         },
         {
@@ -40,7 +40,7 @@ export let responsiveSettings = [
             arrows: true,
             slidesToShow: 3,
             slidesToScroll: 1,
-            dots: true
+            dots: false
           }
         },
         {
@@ -51,7 +51,7 @@ export let responsiveSettings = [
             arrows: true,
             slidesToShow: 2,
             slidesToScroll: 1,
-            dots: true
+            dots: false
           }
         },
         {
@@ -62,7 +62,7 @@ export let responsiveSettings = [
             arrows: true,
             slidesToShow: 1,
             slidesToScroll: 1,
-            dots: true
+            dots: false
           }
         },
       ]

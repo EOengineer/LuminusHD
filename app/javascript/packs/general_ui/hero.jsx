@@ -12,7 +12,7 @@ class Hero extends React.Component {
     let background    = { background: 'url(' + this.props.imageUrl + ') center center', backgroundSize: 'cover' }
 
     return(
-      <section style={background} className="hero is-medium is-dark">
+      <section style={background} className="hero is-medium is-dark has-border-bottom">
         <div className="hero-body">
           <div className="container" >
             <h1 className="title">

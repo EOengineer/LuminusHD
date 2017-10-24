@@ -65,6 +65,7 @@ class HomePage extends React.Component {
 
         {!this.state.loading ? <AlbumCarousel
           key={"New-Releases"}
+          needsHeadroom={true}
           identifier={"New-Releases"}
           carouselTitle={"New Releases"}
           albums={this.state.newReleases}

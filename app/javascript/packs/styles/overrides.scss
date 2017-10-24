@@ -1,8 +1,12 @@
 
+div.carousel:nth-child(0) { padding-top: 2em; }
 
 .carousel {
   min-height: 27em;
-  padding-top: 2em;
+
+  &-headroom {
+    padding-top: 3em;
+  }
 
   &-item {
     text-align: center;
@@ -13,6 +17,12 @@
       transform: scale(1.1);
       cursor: pointer;
     }
+
+    &-title {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      border-top: 1px solid white;
+    }
   }
 
   &-title {
@@ -21,7 +31,7 @@
 }
 
 .slick-arrow:before, .slick-arrow:after {
-  color: gray;
+  color: white;
 }
 
 .slick-slide {
@@ -86,3 +96,14 @@
   }
 }
 
+.has-border-bottom {
+  border-bottom: 1px solid white;
+}
+
+.has-border {
+  border: 2px outset white;
+}
+
+.no-padding {
+  padding-bottom: 0px;
+}

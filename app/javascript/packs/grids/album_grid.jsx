@@ -39,7 +39,7 @@ class AlbumGrid extends React.Component {
     return (
       <div className="carousel container">
 
-        <h1 className="title is-size-4 carousel-title">{carouselTitle}</h1>
+        <h1 className="title has-text-white is-size-4 carousel-title">{carouselTitle}</h1>
 
         <div className="grid">
           {this.listAlbums()}
