@@ -11,7 +11,7 @@ class Navigation extends React.Component {
   render() {
 
     return(
-      <nav className="navbar is-black">
+      <nav className="navbar is-dark">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
             <img src="http://bulma.io/images/bulma-logo-white.png" alt="LuminusHD: The ultimate in HighRes Audio" width="112" height="28" />

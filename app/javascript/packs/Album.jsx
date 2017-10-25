@@ -68,7 +68,7 @@ class Album extends React.Component {
         <section className="section restrict-height is-clearfix">
           {album &&
             <div className="content">
-              <div className="container has-text-white">
+              <div className="container">
                 <div className="columns restrict-height">
 
                   <div className="column">
@@ -78,9 +78,9 @@ class Album extends React.Component {
                   </div>
 
                   <div className="column">
-                    <h1 className="title has-text-white is-size-5">{album.title}
-                      <span className="has-text-white is-size-6"> | {album.artist.name}
-                        <span className="has-text-white is-size-6"> | 1980</span>
+                    <h1 className="title is-size-5">{album.title}
+                      <span className="is-size-6"> | {album.artist.name}
+                        <span className="is-size-6"> | 1980</span>
                       </span>
                     </h1>
 

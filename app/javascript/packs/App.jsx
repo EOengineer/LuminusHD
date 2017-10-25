@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(
     <Router>
-      <div style={{backgroundColor: '#0a0a0a'}} >
+      <div>
         <Navigation />
 
         <Route

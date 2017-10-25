@@ -17,13 +17,13 @@ class CarouselAlbum extends React.Component {
 
     return (
       <Link to={relativeUrl}>
-        <div className={"carousel-item carousel-album option has-border" + flexClass} >
+        <div className={"carousel-item carousel-album option " + flexClass} >
 
             <div className="image is-square">
               <img src={this.props.album.image_url}></img>
             </div>
 
-            <h1 className="carousel-item-title title has-text-white is-size-7">{this.props.album.title}</h1>
+            <h1 className="title is-size-7">{this.props.album.title}</h1>
 
         </div>
       </Link>
