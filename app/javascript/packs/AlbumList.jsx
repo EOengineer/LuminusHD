@@ -72,10 +72,10 @@ class AlbumList extends React.Component {
 
           <section className="section no-padding">
             <div className="container">
-              <div style={{marginRight: "2.5em"}} className="field is-pulled-right has-addons">
+              <div className="field is-pulled-right has-addons">
 
                 <div className="control">
-                  <input onChange={this.search} className="input is-pulled-right" type="text" placeholder="search" name="q"></input>
+                  <input onChange={this.search} className="input is-pulled-right is-forefront" type="text" placeholder="search" name="q"></input>
                 </div>
                 <div className="control">
                   <a className="button is-info">

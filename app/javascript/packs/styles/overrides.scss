@@ -58,7 +58,7 @@ div.carousel:nth-child(0) { padding-top: 2em; }
     justify-content: center;
   }
 
-  align-content: center;
+  align-content: space-evenly;
 }
 
 .grid-cell {
@@ -106,4 +106,14 @@ div.carousel:nth-child(0) { padding-top: 2em; }
 
 .album .carousel {
   width: 400px;
+}
+
+.is-forefront {
+  z-index: 1;
+}
+
+.right-aligned {
+  position: relative;
+  top: 0px;
+  right: 0px;
 }

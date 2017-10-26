@@ -105,6 +105,7 @@ class Album extends React.Component {
         </section>
 
         <section className="section">
+        {album &&
           <div className="container-fluid">
             <p className="title has-text-right">The Production</p>
             <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well!</p>
@@ -119,6 +120,7 @@ class Album extends React.Component {
             <br />
             <p className="">Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
           </div>
+        }
         </section>
 
 
