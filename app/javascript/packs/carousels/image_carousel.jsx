@@ -36,13 +36,8 @@ class ImageCarousel extends React.Component {
       let elementId = this.$el[0].id
 
       this.$el.slick({
-        adaptiveWidth: false,
-        focusOnSelect: false,
-        variableWidth: false,
-        accessibility: false,
         touchMove: true,
         swipe: true,
-        responsive: responsiveSettings
       });
 
     }

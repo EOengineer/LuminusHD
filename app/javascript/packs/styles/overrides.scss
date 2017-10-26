@@ -1,8 +1,12 @@
 
 div.carousel:nth-child(0) { padding-top: 2em; }
 
+*{
+  min-width: 0;
+  min-height: 0;
+}
+
 .carousel {
-  min-height: 27em;
 
   &-headroom {
     padding-top: 3em;
@@ -93,4 +97,13 @@ div.carousel:nth-child(0) { padding-top: 2em; }
 
 .no-padding {
   padding-bottom: 0px;
+}
+
+// Album Page
+.is-dark-gradient {
+  background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
+}
+
+.album .carousel {
+  width: 400px;
 }

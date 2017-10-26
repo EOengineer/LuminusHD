@@ -49,7 +49,16 @@ class AlbumCarousel extends React.Component {
     }
     $('.slick-slide').bind('touchstart', function(){ return true });
     this.$el.on('swipe', function(event, slick, direction){
-      console.log(direction);
+      console.log("direction", direction);
+      console.log("this", this);
+      console.log("event", event.originalEvent)
+      // left
+    });
+
+    this.$el.on('breakpoint', function(event, slick, breakpoint){
+      console.log("breakpoint", breakpoint);
+      console.log("this", this);
+      console.log("event", event)
       // left
     });
   }

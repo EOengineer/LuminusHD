@@ -39,7 +39,6 @@ class Album extends React.Component {
   }
 
   updateSelectedTab(selectedTab) {
-
     this.setState({selectedTab: selectedTab})
   }
 
@@ -78,14 +77,9 @@ class Album extends React.Component {
                   </div>
 
                   <div className="column">
-                    <h1 className="title is-size-5">{album.title}
-                      <span className="is-size-6"> | {album.artist.name}
-                        <span className="is-size-6"> | 1980</span>
-                      </span>
-                    </h1>
-
-                    <div dangerouslySetInnerHTML={{__html: album.description}} />
-
+                    <p className="title has-text-weight-light">$19.99</p>
+                    <p>Purchase {album && album.title} in revolutionary MQA format and experience the Highest Quality representation, exactly as {album && album.artist.name} intended.</p>
+                    <button className="button is-large is-success has-text-weight-light">Buy Album</button>
                   </div>
 
                 </div>
@@ -94,38 +88,50 @@ class Album extends React.Component {
           }
         </section>
 
-        <section className="section">
-          <div className="tabs is-centered is-boxed">
-            <ul>
-            <li className={this.state.selectedTab === "art" ? "is-active" : ""} onClick={this.updateSelectedTab.bind(this, "art")}>
-                <a>
-                  <span id="art" className="icon is-small"><i className="fa fa-film"></i></span>
-                  <span>Album Art</span>
-                </a>
-              </li>
-              <li className={this.state.selectedTab === "music" ? "is-active" : ""} onClick={this.updateSelectedTab.bind(this, "music")}>
-                <a>
-                  <span id="music" className="icon is-small"><i className="fa fa-music"></i></span>
-                  <span>Music</span>
-                </a>
-              </li>
-            </ul>
-          </div>
 
-          {this.state.selectedTab === "art" &&
-          <div className="container restrict has-text-white has-text-centered" id="art-content">
-            <h1 className="title has-text-white is-4">View the high quality album art included with your purchase.</h1>
-            {this.state.albumArt.length > 0 ? <ImageCarousel identifier="art" carouselTitle="Album Artwork" images={this.state.albumArt} /> : <CarouselLoader />}
-          </div>
-          }
-
-          {this.state.selectedTab === "music" &&
-          <div className="container restrict has-text-centered">
-            <h1 className="title has-text-white is-4">View the available tracks and formats for this album.</h1>
+        <section className="section is-dark-gradient">
+        {album &&
+          <div className="container-fluid">
+            <p className="title has-text-white">The Album</p>
+            <p className="title is-size-5 has-text-white">{album.title}
+              <span className="is-size-6 has-text-white"> | {album.artist.name}
+                <span className="is-size-6 has-text-white"> | 1980</span>
+              </span>
+            </p>
+            <div dangerouslySetInnerHTML={{__html: album.description}} />
             {this.state.album.tracks.length > 0 ? <TrackTable tracks={this.state.album.tracks} /> : <div>loading</div>}
           </div>
-          }
+        }
+        </section>
 
+        <section className="section">
+          <div className="container-fluid">
+            <p className="title has-text-right">The Production</p>
+            <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well!</p>
+            <br/>
+            <p className=""> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
+            <br />
+            <p className="">Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
+            <br />
+            <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well!</p>
+            <br/>
+            <p className=""> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
+            <br />
+            <p className="">Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
+          </div>
+        </section>
+
+
+        <section className="section is-dark-gradient">
+        {album &&
+          <div className="album container-fluid">
+            <p className="title has-text-white">The Artwork</p>
+            <div className="container restrict has-text-white has-text-centered" id="art-content">
+              {this.state.albumArt.length > 0 ? <ImageCarousel identifier="art" images={this.state.albumArt} /> : <CarouselLoader />}
+            </div>
+            <div dangerouslySetInnerHTML={{__html: album.description}} />
+          </div>
+        }
         </section>
 
       </div>
