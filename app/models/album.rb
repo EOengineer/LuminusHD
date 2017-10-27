@@ -3,7 +3,7 @@ class Album < ApplicationRecord
   belongs_to :artist
   belongs_to :label
 
-  has_many :album_tracks
+  has_many :album_tracks, -> { order('position ASC') }
   has_many :tracks, through: :album_tracks
 
   has_many :album_genres

@@ -106,8 +106,14 @@ class Album extends React.Component {
 
         <section className="section">
         {album &&
-          <div className="container-fluid">
+          <div className="container-fluid has-text-right">
             <p className="title has-text-right">The Production</p>
+            <p className="title is-size-5">Some Studio
+              <span className="is-size-6"> | Some Location
+                <span className="is-size-6"> | Some Country</span>
+              </span>
+            </p>
+
             <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well!</p>
             <br/>
             <p className=""> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
@@ -119,6 +125,11 @@ class Album extends React.Component {
             <p className=""> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
             <br />
             <p className="">Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
+
+            <div className="image-frame-right">
+              <img className=" is-square right-aligned" src="https://d2s36jztkuk7aw.cloudfront.net/sites/default/files/tile/image/original_128.jpg"></img>
+            </div>
+
           </div>
         }
         </section>
