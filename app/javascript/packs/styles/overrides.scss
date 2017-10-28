@@ -128,20 +128,45 @@ div.carousel:nth-child(0) { padding-top: 2em; }
   padding-top: 3em;
 }
 
+.track-list-container {
+  width: 100%;
+
+}
+
 .track-list-row {
   display: flex;
   line-height: 1em;
-  border-bottom: 1px solid white;
 }
 
 .track-list-item {
-  flex: 1;
+  flex: 0;
+  flex-basis: 30%;
   justify-content: center;
   align-content: center;
-  text-align: center;
+  text-align: left;
 }
 
 .track-list-item > p {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.content-has-dark-text div > p {
+  color: black !important;
+}
+
+.content-has-light-text div > p {
+  color: white !important;
+}
+
+.payment-bar {
+  padding-top: 1em;
+}
+
+.payment-bar .button {
+  margin-left: 10px;
+}
+
+.album-price {
+  //margin-right: 50px;
 }

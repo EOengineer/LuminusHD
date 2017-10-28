@@ -13,6 +13,11 @@ import CarouselLoader from './carousels/carousel_loader';
 import ImageCarousel from './carousels/image_carousel';
 import TrackTable from './general_ui/track_table';
 
+import AlbumPurchaseTiles from './tiles/album_purchase_tile';
+import AlbumProductionTiles from './tiles/album_production_tile';
+import AlbumDescriptionTiles from './tiles/album_description_tile';
+import AlbumArtworkTiles from './tiles/album_artwork_tile';
+import AlbumAccoladesTiles from './tiles/album_accolades_tile';
 
 
 class Album extends React.Component {
@@ -56,6 +61,8 @@ class Album extends React.Component {
     })
   }
 
+
+
   render() {
 
     let album = this.state.album
@@ -66,26 +73,12 @@ class Album extends React.Component {
 
     return (
       <div>
-        <section className="section restrict-height is-clearfix">
+        <section className="section">
           {album &&
-            <div className="content">
-              <div className="container">
-                <div className="columns restrict-height">
-
-                  <div className="column">
-                    <div style={albumImageStyle} className="image restrict-height">
-                      <img className="restrict-width" style={{marginLeft: 'auto', marginRight: 'auto'}} src={album.image_url}></img>
-                    </div>
-                  </div>
-
-                  <div className="column">
-                    <p className="title has-text-weight-light">$19.99</p>
-                    <p>Purchase {album && album.title} in revolutionary MQA format and experience the Highest Quality representation, exactly as {album && album.artist.name} intended.</p>
-                    <button className="button is-large is-success has-text-weight-light">Buy Album</button>
-                  </div>
-
-                </div>
-              </div>
+            <div className="container-fluid has-text-right">
+              <AlbumPurchaseTiles
+                album={album}
+              />
             </div>
           }
         </section>
@@ -94,14 +87,11 @@ class Album extends React.Component {
         <section className="section is-dark-gradient">
         {album &&
           <div className="container-fluid">
-            <p className="title has-text-white">The Album</p>
-            <p className="title is-size-5 has-text-white">{album.title}
-              <span className="is-size-6 has-text-white"> | {album.artist.name}
-                <span className="is-size-6 has-text-white"> | 1980</span>
-              </span>
-            </p>
-            <div dangerouslySetInnerHTML={{__html: album.description}} />
-            {this.state.album.tracks.length > 0 ? <TrackTable tracks={this.state.album.tracks} /> : <div>loading</div>}
+            <AlbumDescriptionTiles
+              mainContentTitle={"The Album"}
+              mainContentSubtitle={["Some Studio", "Some Location", "Some Country"]}
+              mainContent={album.description}
+            />
           </div>
         }
         </section>
@@ -109,42 +99,44 @@ class Album extends React.Component {
         <section className="section">
         {album &&
           <div className="container-fluid has-text-right">
-            <p className="title has-text-right">The Production</p>
-            <p className="title is-size-5">Some Studio
-              <span className="is-size-6"> | Some Location
-                <span className="is-size-6"> | Some Country</span>
-              </span>
-            </p>
 
-            <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well!</p>
-            <br/>
-            <p className=""> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
-            <br />
-            <p className="">Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
-            <br />
-            <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well!</p>
-            <br/>
-            <p className=""> Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque.</p>
-            <br />
-            <p className="">Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub works as well! nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque</p>
-
-            <div className="image-frame-right">
-              <img className=" is-square right-aligned" src="https://d2s36jztkuk7aw.cloudfront.net/sites/default/files/tile/image/original_128.jpg"></img>
-            </div>
+            <AlbumProductionTiles
+              mainContentTitle={"The Production"}
+              mainContentSubtitle={["Some Studio", "Some Location", "Some Country"]}
+              mainContent={album.description}
+            />
 
           </div>
         }
         </section>
 
 
+
         <section className="section is-dark-gradient">
         {album &&
           <div className="album container-fluid">
-            <p className="title has-text-white">The Artwork</p>
-            <div className="container restrict has-text-white has-text-centered" id="art-content">
-              {this.state.albumArt.length > 0 ? <ImageCarousel identifier="art" images={this.state.albumArt} /> : <CarouselLoader />}
-            </div>
-            <div dangerouslySetInnerHTML={{__html: album.description}} />
+
+            <AlbumArtworkTiles
+              mainContentTitle={"The Artwork"}
+              mainContentSubtitle={["Some Studio", "Some Location", "Some Country"]}
+              mainContent={album.description}
+            />
+          </div>
+        }
+        </section>
+
+
+
+        <section className="section">
+        {album &&
+          <div className="container-fluid has-text-right">
+
+            <AlbumAccoladesTiles
+              mainContentTitle={"Critical and Cultural Accolades"}
+              mainContentSubtitle={["Some Studio", "Some Location", "Some Country"]}
+              mainContent={album.description}
+            />
+
           </div>
         }
         </section>

@@ -21,16 +21,13 @@ class TrackTable extends React.Component {
 
   render() {
     return(
-      <div className="track-list">
+      <div className="track-list track-list-container">
           <div className="has-text-white flex-left track-list-row">
-            <div className="level-item track-list-item">
+            <div className="track-list-item">
               <p className="">Title</p>
             </div>
-            <div className="level-item track-list-item">
+            <div className="track-list-item">
               <p className="">Time</p>
-            </div>
-            <div className="level-item track-list-item">
-              <p className="">Single</p>
             </div>
           </div>
           {this.props.tracks.map((track, i) => {
@@ -41,9 +38,6 @@ class TrackTable extends React.Component {
                 </div>
                 <div className="track-list-item">
                   <p className="">{track.time}</p>
-                </div>
-                <div className="track-list-item">
-                  <p className="">{track.single}</p>
                 </div>
               </div>
             )
