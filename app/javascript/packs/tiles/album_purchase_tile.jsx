@@ -10,8 +10,8 @@ class AlbumPurchaseTiles extends React.Component {
     return (
       <div className="columns is-centered">
 
-        <div className="column is-one-third-tablet">
-          <div className="image is-square">
+        <div className="column is-one-half-tablet">
+          <div className="image is-square is-xl">
             <img src={this.props.album.image_url}></img>
           </div>
         </div>
@@ -33,9 +33,9 @@ class AlbumPurchaseTiles extends React.Component {
           </article>
           <div className="payment-bar">
             <div>
-              <span className="button is-size-5 is-success album-price has-text-weight-light has-text-white">$19.99
-                <button className="button"><i className="fa fa-paypal" aria-hidden="true"></i>PayPal</button>
-                <button className="button"><i className="fa fa-cc-stripe" aria-hidden="true"></i>Stripe</button>
+              <span className="payment-options button is-size-5 album-price has-text-weight-light">$19.99
+                <button className="button is-medium is-success has-text-white"><i className="fa fa-paypal" aria-hidden="true"></i>PayPal</button>
+                <button className="button is-medium is-success has-text-white"><i className="fa fa-cc-stripe" aria-hidden="true"></i>Stripe</button>
               </span>
             </div>
           </div>
