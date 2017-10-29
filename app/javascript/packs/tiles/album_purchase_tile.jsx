@@ -16,7 +16,7 @@ class AlbumPurchaseTiles extends React.Component {
           </div>
         </div>
 
-        <div className="column is-one-third-tablet is-half-desktop">
+        <div className="column is-one-fifth-tablet is-offset-one-fifth-tablet is-three-fifths-desktop">
           <article>
             <div className="content">
               <p className="title has-text-right">{this.props.album.title}</p>

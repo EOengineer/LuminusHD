@@ -7,8 +7,8 @@ class AlbumAccoladesTiles extends React.Component {
   render() {
     return (
 
-      <div className="tile is-ancestor">
-      <div className="tile is-parent is-hidden-tablet">
+      <div className="columns">
+        <div className="column is-hidden-tablet">
           <article className="tile is-child">
             <div className="content">
               <p className="title has-text-right">{this.props.mainContentTitle}</p>
@@ -23,7 +23,7 @@ class AlbumAccoladesTiles extends React.Component {
             </div>
           </article>
         </div>
-        <div className="tile is-vertical is-4">
+        <div className="column is-half-desktop">
           <div className="tile">
             <div className="tile is-parent is-vertical">
               <article className="tile is-child notification is-primary">
@@ -55,7 +55,7 @@ class AlbumAccoladesTiles extends React.Component {
             </article>
           </div>
         </div>
-        <div className="tile is-parent is-hidden-mobile">
+        <div className="column is-half-desktop is-hidden-mobile">
           <article className="tile is-child">
             <div className="content">
               <p className="title has-text-right">{this.props.mainContentTitle}</p>

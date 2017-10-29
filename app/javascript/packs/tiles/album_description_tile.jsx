@@ -7,9 +7,9 @@ class AlbumDescriptionTiles extends React.Component {
   render() {
     return (
 
-      <div className="tile is-ancestor">
-        <div className="tile is-parent">
-          <article className="tile is-child">
+      <div className="columns">
+        <div className="column is-half-desktop">
+          <article className="">
             <div className="content">
               <p className="title has-text-white">{this.props.mainContentTitle}</p>
               <p className="is-size-6 has-text-white">Some Studio
@@ -23,7 +23,7 @@ class AlbumDescriptionTiles extends React.Component {
             </div>
           </article>
         </div>
-        <div className="tile is-vertical is-4">
+        <div className="column is-half-desktop">
           <div className="tile">
             <div className="tile is-parent is-vertical">
               <article className="tile is-child notification is-primary">
