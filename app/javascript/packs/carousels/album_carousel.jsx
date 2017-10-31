@@ -31,7 +31,7 @@ class AlbumCarousel extends React.Component {
 
 
   initializeSlider() {
-    this.$el      = $(this.el);
+    this.$el = $(this.el);
 
     if (this.$el[0] && !this.$el.hasClass('slick-initalized')) {
       let elementId = this.$el[0].id
@@ -48,19 +48,6 @@ class AlbumCarousel extends React.Component {
 
     }
     $('.slick-slide').bind('touchstart', function(){ return true });
-    this.$el.on('swipe', function(event, slick, direction){
-      console.log("direction", direction);
-      console.log("this", this);
-      console.log("event", event.originalEvent)
-      // left
-    });
-
-    this.$el.on('breakpoint', function(event, slick, breakpoint){
-      console.log("breakpoint", breakpoint);
-      console.log("this", this);
-      console.log("event", event)
-      // left
-    });
   }
 
   componentDidMount() {

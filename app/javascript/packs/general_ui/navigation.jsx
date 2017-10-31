@@ -8,6 +8,35 @@ import {
 
 class Navigation extends React.Component {
 
+
+  linkActiveListener() {
+    // Get all "navbar-burger" elements
+      var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(function ($el) {
+          $el.addEventListener('click', function () {
+            // Get the target from the "data-target" attribute
+            var target = $el.dataset.target;
+            var $target = document.getElementById(target);
+
+            // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+            $el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+  }
+
+
+
+  componentDidMount() {
+    this.linkActiveListener()
+  }
+
   render() {
 
     return(
@@ -46,9 +75,6 @@ class Navigation extends React.Component {
                 <Link to="/acclaimed-releases" className="navbar-item ">
                   Critically Acclaimed
                 </Link>
-                <a className="navbar-item " href="http://bulma.io/documentation/layout/container/">
-                  Layout
-                </a>
               </div>
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
@@ -65,67 +91,8 @@ class Navigation extends React.Component {
                 <a className="navbar-item " href="http://bulma.io/documentation/columns/basics/">
                   Critically Acclaimed
                 </a>
-                <a className="navbar-item " href="http://bulma.io/documentation/layout/container/">
-                  Layout
-                </a>
-
               </div>
             </div>
-
-            <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link " href="/documentation/overview/start/">
-                Genres
-              </a>
-              <div className="navbar-dropdown is-boxed">
-                <a className="navbar-item " href="/documentation/overview/start/">
-                  Acoustic
-                </a>
-                <a className="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
-                  Blues
-                </a>
-                <a className="navbar-item " href="http://bulma.io/documentation/columns/basics/">
-                  Classical
-                </a>
-                <a className="navbar-item " href="http://bulma.io/documentation/layout/container/">
-                  Jazz
-                </a>
-                <a className="navbar-item " href="http://bulma.io/documentation/form/general/">
-                  Pop
-                </a>
-                <a className="navbar-item " href="http://bulma.io/documentation/elements/box/">
-                  Rock
-                </a>
-              </div>
-            </div>
-
-            { false &&
-              <div className="navbar-item has-dropdown is-hoverable">
-                <a className="navbar-link " href="/documentation/overview/start/">
-                  Account
-                </a>
-                <div className="navbar-dropdown is-boxed">
-                  <a className="navbar-item " href="/documentation/overview/start/">
-                    Overview
-                  </a>
-                  <a className="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
-                    Modifiers
-                  </a>
-                  <a className="navbar-item " href="http://bulma.io/documentation/columns/basics/">
-                    Columns
-                  </a>
-                  <a className="navbar-item " href="http://bulma.io/documentation/layout/container/">
-                    Layout
-                  </a>
-                  <a className="navbar-item " href="http://bulma.io/documentation/form/general/">
-                    Form
-                  </a>
-                  <a className="navbar-item " href="http://bulma.io/documentation/elements/box/">
-                    Elements
-                  </a>
-                </div>
-              </div>
-            }
-
           </div>
 
 
