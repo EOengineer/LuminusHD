@@ -1,5 +1,6 @@
 module Api::V1
   class AlbumsController < ApiController
+    # skip_before_action :authenticate_request
 
     def new_releases
       @albums = Album.order(:created_at).limit(40)

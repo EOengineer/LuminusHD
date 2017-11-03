@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   get '/home', to: "home#index", as: "homepage"
 
+  # authentication related
+  get '/sign-in', to: "authentication#sign_in", as: "sign_in"
+  post 'authenticate', to: 'authentication#authenticate'
 
 
 

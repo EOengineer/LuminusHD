@@ -8,10 +8,10 @@ import {
   Link
 } from 'react-router-dom'
 
-import Navigation from './general_ui/navigation';
-import HomePage from './Homepage';
-import AlbumList from './AlbumList';
-import Album from './Album';
+import HomePage from '../components/Homepage';
+import AlbumList from '../components/AlbumList';
+import Album from '../components/Album';
+import Derp from '../components/derp.jsx';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Router>
       <div>
-        <Navigation />
-
         <Route
         exact path="/"
         component={HomePage} />
