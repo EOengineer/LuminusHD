@@ -3,24 +3,23 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 import axios from 'axios';
-
-// import { BeatLoader, CircleLoader } from 'react-spinners';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 
 class SignInForm extends React.Component {
 
   submitCredentials = (e) => {
-    let email    = document.getElementById('email').value
-    let password = document.getElementById('password').value
-    console.log("email val", email.value)
-    console.log("pass val", password.value)
+    let params = new URLSearchParams();
+    params.append("email", document.getElementById('email').value)
+    params.append("password", document.getElementById('password').value)
+    console.log("email val", email)
+    console.log("pass val", password)
 
-    axios.post('/authenticate', {
-      email: email,
-      password: password
-    })
+    axios.post('/authenticate', params)
     .then(function (response) {
-      console.log(response);
+      console.log("good", response)
+      document.cookie="JWT=" + response.data.auth_token
+      window.location.replace("http://localhost:3000")
     })
     .catch(function (error) {
       console.log(error);
