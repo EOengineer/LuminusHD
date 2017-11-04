@@ -1,9 +1,5 @@
 class AuthenticationsController < ApplicationController
 
-  def sign_in
-    # a template for client side authentication form
-  end
-
   def authenticate
     command = AuthenticateUser.call(params[:email], params[:password])
 

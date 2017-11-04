@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 import axios from 'axios';
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 
 class SignInForm extends React.Component {
@@ -13,7 +12,7 @@ class SignInForm extends React.Component {
     params.append("email", document.getElementById('email').value)
     params.append("password", document.getElementById('password').value)
 
-    axios.post('/authenticate', params)
+    axios.post('/v1/sessions', params)
     .then(function (response) {
       localStorage.setItem('access_token', response.data.auth_token)
       document.cookie="access_token=" + response.data.auth_token

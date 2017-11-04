@@ -11,7 +11,7 @@ class RegistrationForm extends React.Component {
     let password = document.getElementById('password').value
     let password_confirm = document.getElementById('password-confirmation').value
 
-    axios.post('/register', {users: {email: email, password: password, password_confirmation: password_confirm}})
+    axios.post('/v1/users', {users: {email: email, password: password, password_confirmation: password_confirm}})
     .then(function (response) {
       console.log("registration", response)
       localStorage.setItem('access_token', response.data.auth_token)

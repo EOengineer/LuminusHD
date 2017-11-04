@@ -7,18 +7,22 @@ Rails.application.routes.draw do
   get '/account', to: "accounts#show", as: "account"
 
   # registration
-  get '/sign-up', to: "users#new", as: "new_user"
-  post '/register', to: "users#create", as: "create_user"
+  get '/sign-up', to: "home#sign_up", as: "new_user"
+
 
   # authentication related
-  get '/sign-in', to: "authentications#sign_in", as: "sign_in"
-  post 'authenticate', to: 'authentications#authenticate'
+  get '/sign-in', to: "home#sign_in", as: "sign_in"
+  # post 'authenticate', to: 'authentications#authenticate'
 
 
 
   # API
   scope module: 'api' do
     namespace :v1, defaults: { format: :json } do
+
+      # new users/registration
+      post '/users', to: "users#create", as: "create_user"
+      post '/sessions', to: "sessions#create", as: "create_session"
 
       #homepage
       get '/home/carousels', to: "homepage#carousels", as: "homepage_carousels"
