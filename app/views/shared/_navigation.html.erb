@@ -52,22 +52,17 @@
 
       <div class="navbar-item">
         <div class="field is-grouped">
-          <p class="control">
-            <a class="bd-tw-button button"
-              data-social-network="Twitter"
-              data-social-action="tweet"
-              data-social-target="http://bulma.io"
-              href="/">
-              <span class="icon">
-                <i class="fa fa-twitter"></i>
-              </span>
-              <span>
-                Tweet
-              </span>
-            </a>
-          </p>
+
 
           <% unless @current_user %>
+            <p class="control">
+              <a id="register" class="button is-primary" href="/sign-up">
+                <span class="icon">
+                  <i class="fa fa-sign-in"></i>
+                </span>
+                <span>Create Account</span>
+              </a>
+            </p>
             <p class="control">
               <a class="button is-primary" href="/sign-in">
                 <span class="icon">
@@ -78,6 +73,20 @@
             </p>
 
           <% else %>
+            <p class="control">
+              <a class="bd-tw-button button"
+                data-social-network="Twitter"
+                data-social-action="tweet"
+                data-social-target="http://bulma.io"
+                href="/">
+                <span class="icon">
+                  <i class="fa fa-twitter"></i>
+                </span>
+                <span>
+                  Tweet
+                </span>
+              </a>
+            </p>
             <p class="control">
               <a id="sign-out" class="button is-primary" href="/sign-in">
                 <span class="icon">

@@ -7,12 +7,12 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def authenticate_request
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
-  end
-
   def set_current_user
     @current_user = AuthorizeApiRequest.call(request.headers, cookies).result
+  end
+
+  def authenticate_request
+    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
 
 

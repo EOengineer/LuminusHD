@@ -1,4 +1,4 @@
-class AuthenticationController < ApplicationController
+class AuthenticationsController < ApplicationController
 
   def sign_in
     # a template for client side authentication form

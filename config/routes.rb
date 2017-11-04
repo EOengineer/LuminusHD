@@ -6,9 +6,13 @@ Rails.application.routes.draw do
 
   get '/account', to: "accounts#show", as: "account"
 
+  # registration
+  get '/sign-up', to: "users#new", as: "new_user"
+  post '/register', to: "users#create", as: "create_user"
+
   # authentication related
-  get '/sign-in', to: "authentication#sign_in", as: "sign_in"
-  post 'authenticate', to: 'authentication#authenticate'
+  get '/sign-in', to: "authentications#sign_in", as: "sign_in"
+  post 'authenticate', to: 'authentications#authenticate'
 
 
 

@@ -15,6 +15,7 @@ import '../styles/overrides.scss';
 import '../styles/auth.scss';
 
 
+import './Register';
 import './Auth.jsx';
 import './App.jsx';
 
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.cookie = 'access_token=;';
       document.cookie = '_luminus_hd_session=;';
     }
+
   }
 
 })
