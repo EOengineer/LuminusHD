@@ -17,8 +17,8 @@ class SignInForm extends React.Component {
 
     axios.post('/authenticate', params)
     .then(function (response) {
-      console.log("good", response)
-      document.cookie="JWT=" + response.data.auth_token
+      localStorage.setItem('access_token', response.data.auth_token)
+      document.cookie="access_token=" + response.data.auth_token
       window.location.replace("http://localhost:3000")
     })
     .catch(function (error) {

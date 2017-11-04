@@ -1,7 +1,7 @@
 module Api::V1
 
   class HomepageController < ApiController
-    # before_action :authenticate_request, only: :carousels
+    skip_before_action :authenticate_request
 
     def index
       @new_releases = Album.take(10)

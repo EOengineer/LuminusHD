@@ -27,8 +27,8 @@ class AuthorizeApiRequest
   def http_auth_header
     if headers['Authorization'].present?
       return headers['Authorization'].split(' ').last
-    elsif cookies['JWT']
-      return cookies['JWT'].split(' ').last
+    elsif cookies['access_token']
+      return cookies['access_token'].split(' ').last
     else
       errors.add(:token, 'Missing token')
     end

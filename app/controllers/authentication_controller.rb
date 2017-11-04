@@ -1,5 +1,4 @@
 class AuthenticationController < ApplicationController
-  skip_before_action :authenticate_request
 
   def sign_in
     # a template for client side authentication form

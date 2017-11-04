@@ -17,3 +17,18 @@ import '../styles/auth.scss';
 
 import './Auth.jsx';
 import './App.jsx';
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  var signOut = document.getElementById('sign-out');
+
+    if (signOut) {
+      signOut.onclick = function() {
+      localStorage.setItem('access_token', "");
+      document.cookie = 'access_token=;';
+      document.cookie = '_luminus_hd_session=;';
+    }
+  }
+
+})
+
