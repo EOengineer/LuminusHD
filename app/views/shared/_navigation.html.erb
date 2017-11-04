@@ -1,3 +1,8 @@
+<%
+if @current_user
+  raise "CURRENT USER DOOD!!!!"
+end
+%>
 <nav class="navbar is-dark">
   <div class="navbar-brand">
     <a class="navbar-item" href="http://bulma.io">
@@ -35,98 +40,6 @@
           </a>
         </div>
       </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link " href="http://bulma.io/blog/">
-          Artists
-        </a>
-        <div id="blogDropdown" class="navbar-dropdown is-boxed" data-style="width: 18rem;">
-
-            <a class="navbar-item" href="/2017/08/03/list-of-tags/">
-              <div class="navbar-content">
-                <p>
-                  <small class="has-text-info">03 Aug 2017</small>
-                </p>
-                <p>New feature: list of tags</p>
-              </div>
-            </a>
-
-            <a class="navbar-item" href="/2017/08/01/bulma-bootstrap-comparison/">
-              <div class="navbar-content">
-                <p>
-                  <small class="has-text-info">01 Aug 2017</small>
-                </p>
-                <p>Bulma / Bootstrap comparison</p>
-              </div>
-            </a>
-
-            <a class="navbar-item" href="/2017/07/24/access-previous-bulma-versions/">
-              <div class="navbar-content">
-                <p>
-                  <small class="has-text-info">24 Jul 2017</small>
-                </p>
-                <p>Access previous Bulma versions</p>
-              </div>
-            </a>
-
-          <a class="navbar-item" href="http://bulma.io/blog/">
-            More posts
-          </a>
-        </div>
-      </div>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link " href="/documentation/overview/start/">
-          Genres
-        </a>
-        <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item " href="/documentation/overview/start/">
-            Overview
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
-            Modifiers
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/columns/basics/">
-            Columns
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/layout/container/">
-            Layout
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/form/general/">
-            Form
-          </a>
-          <a class="navbar-item " href="http://bulma.io/documentation/elements/box/">
-            Elements
-          </a>
-        </div>
-      </div>
-
-      <% if false # if defined? current_user && current_user %>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link " href="/documentation/overview/start/">
-            Account
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item " href="/documentation/overview/start/">
-              Overview
-            </a>
-            <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
-              Modifiers
-            </a>
-            <a class="navbar-item " href="http://bulma.io/documentation/columns/basics/">
-              Columns
-            </a>
-            <a class="navbar-item " href="http://bulma.io/documentation/layout/container/">
-              Layout
-            </a>
-            <a class="navbar-item " href="http://bulma.io/documentation/form/general/">
-              Form
-            </a>
-            <a class="navbar-item " href="http://bulma.io/documentation/elements/box/">
-              Elements
-            </a>
-          </div>
-        </div>
-      <% end %>
 
     </div>
 
@@ -156,14 +69,18 @@
               </span>
             </a>
           </p>
-          <p class="control">
-            <a class="button is-primary" href="/sign-in">
-              <span class="icon">
-                <i class="fa fa-sign-in"></i>
-              </span>
-              <span>Sign In</span>
-            </a>
-          </p>
+
+          <% unless @current_user %>
+            <p class="control">
+              <a class="button is-primary" href="/sign-in">
+                <span class="icon">
+                  <i class="fa fa-sign-in"></i>
+                </span>
+                <span>Sign In</span>
+              </a>
+            </p>
+          <% end %>
+
         </div>
       </div>
     </div>

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel/slick/slick-theme.scss';
-import '../styles/overrides.scss';
 
 import { responsiveSettings } from '../data/responsive';
 

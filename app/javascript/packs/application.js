@@ -16,3 +16,4 @@ import '../styles/auth.scss';
 
 
 import './Auth.jsx';
+import './App.jsx';

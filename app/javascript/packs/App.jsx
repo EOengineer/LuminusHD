@@ -15,47 +15,50 @@ import Derp from '../components/derp.jsx';
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  let rootElement = document.getElementById('root-home')
 
-  ReactDOM.render(
-    <Router>
-      <div>
-        <Route
-        exact path="/"
-        component={HomePage} />
+  if (rootElement) {
+    ReactDOM.render(
+      <Router>
+        <div>
+          <Route
+          exact path="/"
+          component={HomePage} />
 
 
-        <Route
-          exact path="/new-releases"
-          render={(props) => (
-          <AlbumList
-            endpoint="new-releases"
-            title="New Releases"
-            imageUrl="https://static.pexels.com/photos/1774/technology-music-sound-audio.jpg" />
-        )} />
+          <Route
+            exact path="/new-releases"
+            render={(props) => (
+            <AlbumList
+              endpoint="new-releases"
+              title="New Releases"
+              imageUrl="https://static.pexels.com/photos/1774/technology-music-sound-audio.jpg" />
+          )} />
 
-        <Route
-          exact path="/featured-releases"
-          render={(props) => (
-          <AlbumList
-            endpoint="featured-releases"
-            title="Featured Releases"
-            imageUrl="https://static.pexels.com/photos/9137/night-vintage-music-bokeh.jpg" />
-        )} />
+          <Route
+            exact path="/featured-releases"
+            render={(props) => (
+            <AlbumList
+              endpoint="featured-releases"
+              title="Featured Releases"
+              imageUrl="https://static.pexels.com/photos/9137/night-vintage-music-bokeh.jpg" />
+          )} />
 
-        <Route
-          exact path="/acclaimed-releases"
-          render={(props) => (
-          <AlbumList
-            endpoint="acclaimed-releases"
-            title="Critically Acclaimed"
-            imageUrl="https://static.pexels.com/photos/320335/pexels-photo-320335.jpeg" />
-        )} />
+          <Route
+            exact path="/acclaimed-releases"
+            render={(props) => (
+            <AlbumList
+              endpoint="acclaimed-releases"
+              title="Critically Acclaimed"
+              imageUrl="https://static.pexels.com/photos/320335/pexels-photo-320335.jpeg" />
+          )} />
 
-        <Route path="/albums/:id" component={Album} />
+          <Route path="/albums/:id" component={Album} />
 
-      </div>
-    </Router>,
+        </div>
+      </Router>,
 
-    document.getElementById('root-home'),
-  )
+      rootElement,
+    )
+  }
 })

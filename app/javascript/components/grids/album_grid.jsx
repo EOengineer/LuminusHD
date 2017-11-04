@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 // Styles
 import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel/slick/slick-theme.scss';
-import '../styles/overrides.scss';
 
 // Data
 import { responsiveGridSettings } from '../data/responsive';
