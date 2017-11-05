@@ -2,17 +2,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
 
+  # homepage template
   get '/home', to: "home#index", as: "homepage"
 
+  # account/profile
   get '/account', to: "accounts#show", as: "account"
 
   # registration
   get '/sign-up', to: "home#sign_up", as: "new_user"
 
-
-  # authentication related
+  # authentication
   get '/sign-in', to: "home#sign_in", as: "sign_in"
-  # post 'authenticate', to: 'authentications#authenticate'
 
 
 
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :albums
   end
 
+  # catch all ruote to handle unusual requests
   get '*unmatched_route', to: 'home#index'
 
 end

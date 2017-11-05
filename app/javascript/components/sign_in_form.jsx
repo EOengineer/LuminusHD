@@ -8,11 +8,12 @@ import axios from 'axios';
 class SignInForm extends React.Component {
 
   submitCredentials = (e) => {
-    let params = new URLSearchParams();
-    params.append("email", document.getElementById('email').value)
-    params.append("password", document.getElementById('password').value)
+    let data = {};
+    data.email = document.getElementById('email').value
+    data.password = document.getElementById('password').value
+    data.authenticity_token = document.querySelectorAll('meta[name="csrf-token"]')[0].content
 
-    axios.post('/v1/sessions', params)
+    axios.post('/v1/sessions', data)
     .then(function (response) {
       localStorage.setItem('access_token', response.data.auth_token)
       document.cookie="access_token=" + response.data.auth_token
@@ -25,6 +26,7 @@ class SignInForm extends React.Component {
 
 
   render() {
+
     return (
         <section className="hero is-info is-fullheight">
 
@@ -38,8 +40,8 @@ class SignInForm extends React.Component {
                    LuminusHD features the highest quality high definition audio in the industry.  Sign in to create favorites, wishlists, and more.
                 </h2>
 
-                <div className="box">
-                  <div className="field is-grouped">
+                <div className="form-field-spacer">
+                  <div className="field">
 
                     <p className="control is-expanded">
                       <input id="email" className="input" type="text" placeholder="Enter your email" />
@@ -49,19 +51,19 @@ class SignInForm extends React.Component {
                   </div>
                 </div>
 
-                <div className="box">
-                  <div className="field is-grouped">
+                <div className="">
+                  <div className="field">
 
                     <p className="control is-expanded">
                       <input id="password" className="input" type="password" placeholder="Enter your password" />
                     </p>
 
-                    <p className="control">
-                      <a className="button is-info" onClick={this.submitCredentials} >
+                  </div>
+                    <p className="control has-text-centered">
+                      <a className="button is-large is-info" onClick={this.submitCredentials} >
                         Sign In
                       </a>
                     </p>
-                  </div>
                 </div>
 
               </div>
