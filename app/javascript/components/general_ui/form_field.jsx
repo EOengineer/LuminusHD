@@ -14,7 +14,7 @@ class FormField extends React.Component {
             <input id={this.props.id} className="input" type={this.props.type} placeholder={"Enter your " + this.props.title } />
           </p>
           {this.props.errors &&
-            <div className="notification is-danger">{this.props.errors.map((error, i) => {return <p key={i}>{error}</p>})}</div>
+            <div className="notification is-danger">{this.props.errors.map((error, i) => {return <p key={i}>{this.props.title + " " + error}</p>})}</div>
           }
 
         </div>

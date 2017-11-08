@@ -11,7 +11,6 @@ import {
 import HomePage from '../components/Homepage';
 import AlbumList from '../components/AlbumList';
 import Album from '../components/Album';
-import Derp from '../components/derp.jsx';
 
 
 document.addEventListener('DOMContentLoaded', () => {
