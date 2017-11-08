@@ -2,16 +2,37 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import ReactForm from './general_ui/react_form'
+import FormField from './general_ui/form_field'
+import FormButton from './general_ui/form_button'
 import axios from 'axios';
 
 
 class SignInForm extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      errors: {}
+    }
+  }
+
+
+  InvalidCredentialsMessage = () => {
+    this.setState({
+      readyForSubmit: false,
+      errors: {
+        authentication: "Email or Password is Invalid."
+      }
+    })
+  }
+
   submitCredentials = (e) => {
-    let data = {};
+    let data = {}
     data.email = document.getElementById('email').value
     data.password = document.getElementById('password').value
     data.authenticity_token = document.querySelectorAll('meta[name="csrf-token"]')[0].content
+
 
     axios.post('/v1/sessions', data)
     .then(function (response) {
@@ -19,9 +40,13 @@ class SignInForm extends React.Component {
       document.cookie="access_token=" + response.data.auth_token
       window.location.replace("http://localhost:3000")
     })
-    .catch(function (error) {
-      console.log("error", error);
-    });
+    .catch((error) => {
+      if (error.response.status === 401) {
+        this.InvalidCredentialsMessage()
+      }
+      console.log(error.response)
+    })
+
   }
 
 
@@ -30,45 +55,24 @@ class SignInForm extends React.Component {
     return (
         <section className="hero is-info is-fullheight">
 
-          <div className="hero-body">
-            <div className="container has-text-centered">
-              <div className="column is-6 is-offset-3">
-                <h1 className="title">
-                  Sign In
-                </h1>
-                <h2 className="subtitle">
-                   LuminusHD features the highest quality high definition audio in the industry.  Sign in to create favorites, wishlists, and more.
-                </h2>
+          <ReactForm
+            heading="Sign In"
+            subHeading="LuminusHD features the highest quality high definition audio in the industry.  Sign in to create favorites, wishlists, and more."
+          >
 
-                <div className="form-field-spacer">
-                  <div className="field">
-
-                    <p className="control is-expanded">
-                      <input id="email" className="input" type="text" placeholder="Enter your email" />
-                    </p>
+            {this.state.errors.authentication &&
+              <div className="notification is-danger">{this.state.errors.authentication}</div>
+            }
 
 
-                  </div>
-                </div>
+            <FormField id="email" title="email" type="text" />
 
-                <div className="">
-                  <div className="field">
+            <FormField id="password" title="password" type="password" />
 
-                    <p className="control is-expanded">
-                      <input id="password" className="input" type="password" placeholder="Enter your password" />
-                    </p>
+            <FormButton text="Sign In" submitHandler={this.submitCredentials} />
 
-                  </div>
-                    <p className="control has-text-centered">
-                      <a className="button is-large is-info" onClick={this.submitCredentials} >
-                        Sign In
-                      </a>
-                    </p>
-                </div>
 
-              </div>
-            </div>
-          </div>
+          </ReactForm>
 
         </section>
     )

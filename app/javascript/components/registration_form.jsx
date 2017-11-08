@@ -2,17 +2,30 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
+import ReactForm from './general_ui/react_form'
+import FormField from './general_ui/form_field'
+import FormButton from './general_ui/form_button'
 import axios from 'axios';
 
 class RegistrationForm extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      errors: {}
+    }
+  }
+
   submitCredentials = (e) => {
-    let data       = {};
+    let data   = {}
     data.users = {}
+    data.users.first_name = document.getElementById('first-name').value
+    data.users.last_name = document.getElementById('last-name').value
     data.users.email     = document.getElementById('email').value
     data.users.password  = document.getElementById('password').value
     data.users.password_confirmation = document.getElementById('password-confirmation').value
     data.authenticity_token    = document.querySelectorAll('meta[name="csrf-token"]')[0].content
+    let self = this
 
     axios.post('/v1/users', data)
     .then(function (response) {
@@ -22,83 +35,37 @@ class RegistrationForm extends React.Component {
       window.location.replace("http://localhost:3000/account")
     })
     .catch(function (error) {
-      console.log("error", error);
+      console.log("error", error.response);
+      if (error.response.status === 422) {
+        self.setState({
+          errors: error.response.data.errors
+        })
+      }
     });
   }
 
 
   render() {
-
+    console.log("state", this.state.errors)
     return (
         <section className="hero is-info is-fullheight">
 
-          <div className="hero-body">
-            <div className="container has-text-centered">
-              <div className="column is-5 is-offset-4">
-                <h1 className="title">
-                  Create a FREE Account
-                </h1>
-                <h2 className="subtitle">
-                   LuminusHD features the highest quality high definition audio in the industry.  Sign up for <strong>FREE</strong> to create favorites, wishlists, and more.
-                </h2>
+          <ReactForm
+            heading="Create a FREE account">
 
-                <div className="form-field-spacer">
-                  <div className="field">
+            <FormField id="first-name" title="first name" type="text" errors={this.state.errors.first_name} />
 
-                    <p className="control is-expanded">
-                      <input id="first-name" className="input" type="text" placeholder="First name" />
-                    </p>
+            <FormField id="last-name" title="last name" type="text" errors={this.state.errors.last_name} />
 
-                  </div>
-                </div>
+            <FormField id="email" title="email" type="text" errors={this.state.errors.email} />
 
-                <div className="form-field-spacer">
-                  <div className="field">
+            <FormField id="password" title="password" type="password" errors={this.state.errors.password} />
 
-                    <p className="control is-expanded">
-                      <input id="last-name" className="input" type="text" placeholder="Last name" />
-                    </p>
+            <FormField id="password-confirmation" title="password confirmation" type="password" errors={this.state.errors.password_confirmation} />
 
-                  </div>
-                </div>
+            <FormButton text="Sign Up" submitHandler={this.submitCredentials} />
 
-                <div className="form-field-spacer">
-                  <div className="field">
-
-                    <p className="control is-expanded">
-                      <input id="email" className="input" type="text" placeholder="Enter your email" />
-                    </p>
-
-                  </div>
-                </div>
-
-                <div className="form-field-spacer">
-                  <div className="field">
-
-                    <p className="control is-expanded">
-                      <input id="password" className="input" type="password" placeholder="Enter your password" />
-                    </p>
-
-                  </div>
-                </div>
-
-                <div className="form-field-spacer">
-                  <div className="field">
-
-                    <p className="control is-expanded">
-                      <input id="password-confirmation" className="input" type="password" placeholder="Password comfirmation" />
-                    </p>
-
-                  </div>
-                  <p className="control has-text-centered">
-                    <a className="button is-large is-info" onClick={this.submitCredentials} >
-                      Sign In
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          </ReactForm>
 
         </section>
     )
