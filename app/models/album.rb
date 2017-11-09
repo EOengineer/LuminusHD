@@ -9,6 +9,9 @@ class Album < ApplicationRecord
   has_many :album_genres
   has_many :genres, through: :album_genres
 
+  has_many :order_albums
+  has_many :orders, through: :order_albums
+
   validates :title,
             :description,
             :image_url,
