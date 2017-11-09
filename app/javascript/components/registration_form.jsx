@@ -29,7 +29,6 @@ class RegistrationForm extends React.Component {
 
     axios.post('/v1/users', data)
     .then(function (response) {
-      console.log("registration", response)
       localStorage.setItem('access_token', response.data.auth_token)
       document.cookie="access_token=" + response.data.auth_token
       window.location.replace("http://localhost:3000/account")

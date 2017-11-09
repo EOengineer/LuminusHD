@@ -3,22 +3,24 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   # homepage template
-  get '/home', to: "home#index", as: "homepage"
+  get '/home', to: "home#index", as: "homepage", constraints: lambda { |req| req.format == :html }
 
   # account/profile
-  get '/account', to: "accounts#show", as: "account"
+  get '/account', to: "accounts#show", as: "account", constraints: { format: :html }
 
   # registration
-  get '/sign-up', to: "home#sign_up", as: "new_user"
+  get '/sign-up', to: "home#sign_up", as: "new_user", constraints: { format: :html }
 
   # authentication
-  get '/sign-in', to: "home#sign_in", as: "sign_in"
+  get '/sign-in', to: "home#sign_in", as: "sign_in", constraints: { format: :html }
 
+
+  get '/albums/*unmatched_route', to: 'home#index', constraints: { format: :html }
 
 
   # API
   scope module: 'api' do
-    namespace :v1, defaults: { format: :json } do
+    namespace :v1, constraints: { format: :json } do
 
       # new users/registration
       post '/users', to: "users#create", as: "create_user"
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
 
       # albums
       get '/albums/:id', to: "albums#show", as: "album"
-      get '/new-releases', to: "albums#new_releases", as: "new_releases", defaults: {format: 'json'}
+      get '/new-releases', to: "albums#new_releases", as: "new_releases"
       get '/featured-releases', to: "albums#featured_releases", as: "featured_releases"
       get '/acclaimed-releases', to: "albums#acclaimed_releases", as: "acclaimed_releases"
 
@@ -42,7 +44,6 @@ Rails.application.routes.draw do
     resources :albums
   end
 
-  # catch all ruote to handle unusual requests
-  get '*unmatched_route', to: 'home#index'
+  get '*unmatched_route', to: 'home#index', constraints: { format: :html }
 
 end
